@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Winther Garden — Pick Plant Photos</title>
+<style>
+  body { font-family: Inter, sans-serif; max-width: 1200px; margin: 0 auto; padding: 24px; background: #f9fafb; color: #111827; }
+  h1 { font-size: 24px; margin-bottom: 8px; }
+  p.instructions { color: #6b7280; margin-bottom: 32px; }
+  .plant-row { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  h3 { margin: 0 0 16px; font-size: 18px; }
+  .imgs { display: flex; flex-wrap: wrap; gap: 12px; }
+  .img-option { cursor: pointer; border: 3px solid transparent; border-radius: 8px; overflow: hidden; width: 180px; transition: border-color 0.15s; }
+  .img-option:has(input:checked) { border-color: #3B82F6; }
+  .img-option input { display: none; }
+  .img-option img { width: 180px; height: 130px; object-fit: cover; display: block; }
+  .img-label { display: block; font-size: 11px; color: #6b7280; padding: 4px 6px; background: #f9fafb; line-height: 1.4; }
+  #output { margin-top: 32px; background: #1e293b; color: #e2e8f0; border-radius: 12px; padding: 24px; font-family: monospace; font-size: 13px; white-space: pre; }
+  button { margin-top: 24px; background: #3B82F6; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-size: 16px; cursor: pointer; }
+  button:hover { background: #2563eb; }
+  .none-option { font-size: 13px; color: #9ca3af; cursor: pointer; padding: 4px 8px; border: 1px solid #e5e7eb; border-radius: 6px; display: inline-block; margin-top: 8px; }
+</style>
+</head>
+<body>
+<h1>Winther Garden — Pick Plant Photos</h1>
+<p class="instructions">Click to select the best photo for each plant. When done, click "Generate images.json" and copy the output into <code>winther-garden/images.json</code>.</p>
+
+    <div class="plant-row">
+      <h3>Midwinter Fire Dogwood</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Midwinter Fire Dogwood" value="https://upload.wikimedia.org/wikipedia/commons/1/12/Cornus_sanguinea_%27Wisley_Form%27_%28Cultivar_of_Bloodtwig_Dogwood%29_%2832157868530%29.jpg" data-plant="Midwinter Fire Dogwood">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Cornus_sanguinea_%27Wisley_Form%27_%28Cultivar_of_Bloodtwig_Dogwood%29_%2832157868530%29.jpg/500px-Cornus_sanguinea_%27Wisley_Form%27_%28Cultivar_of_Bloodtwig_Dogwood%29_%2832157868530%29.jpg" alt="Cornus sanguinea 'Wisley Form' (Cultivar of Bloodtwig Dogwood) (32157868530).jpg" title="Cornus sanguinea 'Wisley Form' (Cultivar of Bloodtwig Dogwood) (32157868530).jpg">
+        <span class="img-label">1. Cornus sanguinea 'Wisley Form' (Cultivar of Bloodt</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Midwinter Fire Dogwood" value="https://upload.wikimedia.org/wikipedia/commons/0/04/Cornus_sanguinea_Midwinter_Fire_0zz.jpg" data-plant="Midwinter Fire Dogwood">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Cornus_sanguinea_Midwinter_Fire_0zz.jpg/500px-Cornus_sanguinea_Midwinter_Fire_0zz.jpg" alt="Cornus sanguinea Midwinter Fire 0zz.jpg" title="Cornus sanguinea Midwinter Fire 0zz.jpg">
+        <span class="img-label">2. Cornus sanguinea Midwinter Fire 0zz.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Midwinter Fire Dogwood" value="https://upload.wikimedia.org/wikipedia/commons/d/d2/Cornus_sanguinea_Midwinter_Fire_1zz.jpg" data-plant="Midwinter Fire Dogwood">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Cornus_sanguinea_Midwinter_Fire_1zz.jpg/500px-Cornus_sanguinea_Midwinter_Fire_1zz.jpg" alt="Cornus sanguinea Midwinter Fire 1zz.jpg" title="Cornus sanguinea Midwinter Fire 1zz.jpg">
+        <span class="img-label">3. Cornus sanguinea Midwinter Fire 1zz.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Midwinter Fire Dogwood" value="https://upload.wikimedia.org/wikipedia/commons/e/e5/Cornus_sanguinea_Midwinter_Fire_2zz.jpg" data-plant="Midwinter Fire Dogwood">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Cornus_sanguinea_Midwinter_Fire_2zz.jpg/500px-Cornus_sanguinea_Midwinter_Fire_2zz.jpg" alt="Cornus sanguinea Midwinter Fire 2zz.jpg" title="Cornus sanguinea Midwinter Fire 2zz.jpg">
+        <span class="img-label">4. Cornus sanguinea Midwinter Fire 2zz.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Midwinter Fire Dogwood" value="https://upload.wikimedia.org/wikipedia/commons/e/e2/Cornus_sanguinea_Midwinter_Fire_3zz.jpg" data-plant="Midwinter Fire Dogwood">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Cornus_sanguinea_Midwinter_Fire_3zz.jpg/500px-Cornus_sanguinea_Midwinter_Fire_3zz.jpg" alt="Cornus sanguinea Midwinter Fire 3zz.jpg" title="Cornus sanguinea Midwinter Fire 3zz.jpg">
+        <span class="img-label">5. Cornus sanguinea Midwinter Fire 3zz.jpg</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Panicle Hydrangea</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Panicle Hydrangea" value="https://upload.wikimedia.org/wikipedia/commons/6/6c/Hydrangea_paniculata._Pluimhortensia._%28d.j.b.%29_01.jpg" data-plant="Panicle Hydrangea">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Hydrangea_paniculata._Pluimhortensia._%28d.j.b.%29_01.jpg/500px-Hydrangea_paniculata._Pluimhortensia._%28d.j.b.%29_01.jpg" alt="Hydrangea paniculata. Pluimhortensia. (d.j.b.) 01.jpg" title="Hydrangea paniculata. Pluimhortensia. (d.j.b.) 01.jpg">
+        <span class="img-label">1. Hydrangea paniculata. Pluimhortensia. (d.j.b.) 01.</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Panicle Hydrangea" value="https://upload.wikimedia.org/wikipedia/commons/8/8f/Hydrangea_paniculata._Pluimhortensia._%28d.j.b.%29_02.jpg" data-plant="Panicle Hydrangea">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Hydrangea_paniculata._Pluimhortensia._%28d.j.b.%29_02.jpg/500px-Hydrangea_paniculata._Pluimhortensia._%28d.j.b.%29_02.jpg" alt="Hydrangea paniculata. Pluimhortensia. (d.j.b.) 02.jpg" title="Hydrangea paniculata. Pluimhortensia. (d.j.b.) 02.jpg">
+        <span class="img-label">2. Hydrangea paniculata. Pluimhortensia. (d.j.b.) 02.</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Panicle Hydrangea" value="https://upload.wikimedia.org/wikipedia/commons/3/3e/Hydrangea_paniculata_04.JPG" data-plant="Panicle Hydrangea">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Hydrangea_paniculata_04.JPG/500px-Hydrangea_paniculata_04.JPG" alt="Hydrangea paniculata 04.JPG" title="Hydrangea paniculata 04.JPG">
+        <span class="img-label">3. Hydrangea paniculata 04.JPG</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Panicle Hydrangea" value="https://upload.wikimedia.org/wikipedia/commons/3/31/Hydrangea_paniculata_07-02-2026._%28actm.%29.jpg" data-plant="Panicle Hydrangea">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Hydrangea_paniculata_07-02-2026._%28actm.%29.jpg/500px-Hydrangea_paniculata_07-02-2026._%28actm.%29.jpg" alt="Hydrangea paniculata 07-02-2026. (actm.).jpg" title="Hydrangea paniculata 07-02-2026. (actm.).jpg">
+        <span class="img-label">4. Hydrangea paniculata 07-02-2026. (actm.).jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Panicle Hydrangea" value="https://upload.wikimedia.org/wikipedia/commons/e/e0/Hydrangea_paniculata_10.JPG" data-plant="Panicle Hydrangea">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Hydrangea_paniculata_10.JPG/500px-Hydrangea_paniculata_10.JPG" alt="Hydrangea paniculata 10.JPG" title="Hydrangea paniculata 10.JPG">
+        <span class="img-label">5. Hydrangea paniculata 10.JPG</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Nootka Rose</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Nootka Rose" value="https://upload.wikimedia.org/wikipedia/commons/7/72/Rosa_nutkana_07513.JPG" data-plant="Nootka Rose">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Rosa_nutkana_07513.JPG/500px-Rosa_nutkana_07513.JPG" alt="Rosa nutkana 07513.JPG" title="Rosa nutkana 07513.JPG">
+        <span class="img-label">1. Rosa nutkana 07513.JPG</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Nootka Rose" value="https://upload.wikimedia.org/wikipedia/commons/7/72/Rosa_nutkana_fruit.jpg" data-plant="Nootka Rose">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Rosa_nutkana_fruit.jpg/500px-Rosa_nutkana_fruit.jpg" alt="Rosa nutkana fruit.jpg" title="Rosa nutkana fruit.jpg">
+        <span class="img-label">2. Rosa nutkana fruit.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Nootka Rose" value="https://upload.wikimedia.org/wikipedia/commons/a/a9/Rosa_nutkana_kz01.jpg" data-plant="Nootka Rose">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Rosa_nutkana_kz01.jpg/500px-Rosa_nutkana_kz01.jpg" alt="Rosa nutkana kz01.jpg" title="Rosa nutkana kz01.jpg">
+        <span class="img-label">3. Rosa nutkana kz01.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Nootka Rose" value="https://upload.wikimedia.org/wikipedia/commons/d/d5/Rosa_nutkana_kz02.jpg" data-plant="Nootka Rose">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Rosa_nutkana_kz02.jpg/500px-Rosa_nutkana_kz02.jpg" alt="Rosa nutkana kz02.jpg" title="Rosa nutkana kz02.jpg">
+        <span class="img-label">4. Rosa nutkana kz02.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Nootka Rose" value="https://upload.wikimedia.org/wikipedia/commons/c/c3/Rosa_nutkana_var._nutkana_%28Nootka_Rose%29_flower.jpg" data-plant="Nootka Rose">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Rosa_nutkana_var._nutkana_%28Nootka_Rose%29_flower.jpg/500px-Rosa_nutkana_var._nutkana_%28Nootka_Rose%29_flower.jpg" alt="Rosa nutkana var. nutkana (Nootka Rose) flower.jpg" title="Rosa nutkana var. nutkana (Nootka Rose) flower.jpg">
+        <span class="img-label">5. Rosa nutkana var. nutkana (Nootka Rose) flower.jpg</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Blueberries</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Blueberries" value="https://upload.wikimedia.org/wikipedia/commons/2/21/366_Highbush_Blueberry_-_Vaccinium_corymbosum%2C_Leesylvania_State_Park%2C_Woodbridge%2C_Virginia.jpg" data-plant="Blueberries">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/366_Highbush_Blueberry_-_Vaccinium_corymbosum%2C_Leesylvania_State_Park%2C_Woodbridge%2C_Virginia.jpg/500px-366_Highbush_Blueberry_-_Vaccinium_corymbosum%2C_Leesylvania_State_Park%2C_Woodbridge%2C_Virginia.jpg" alt="366 Highbush Blueberry - Vaccinium corymbosum, Leesylvania State Park, Woodbridge, Virginia.jpg" title="366 Highbush Blueberry - Vaccinium corymbosum, Leesylvania State Park, Woodbridge, Virginia.jpg">
+        <span class="img-label">1. 366 Highbush Blueberry - Vaccinium corymbosum, Lee</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Blueberries" value="https://upload.wikimedia.org/wikipedia/commons/1/17/Vaccinium_corymbosum%2801%29.jpg" data-plant="Blueberries">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Vaccinium_corymbosum%2801%29.jpg/500px-Vaccinium_corymbosum%2801%29.jpg" alt="Vaccinium corymbosum(01).jpg" title="Vaccinium corymbosum(01).jpg">
+        <span class="img-label">2. Vaccinium corymbosum(01).jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Blueberries" value="https://upload.wikimedia.org/wikipedia/commons/5/58/Vaccinium_corymbosum_191558696.jpg" data-plant="Blueberries">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Vaccinium_corymbosum_191558696.jpg/500px-Vaccinium_corymbosum_191558696.jpg" alt="Vaccinium corymbosum 191558696.jpg" title="Vaccinium corymbosum 191558696.jpg">
+        <span class="img-label">3. Vaccinium corymbosum 191558696.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Blueberries" value="https://upload.wikimedia.org/wikipedia/commons/b/b9/Vaccinium_corymbosum_Beeren.jpg" data-plant="Blueberries">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Vaccinium_corymbosum_Beeren.jpg/500px-Vaccinium_corymbosum_Beeren.jpg" alt="Vaccinium corymbosum Beeren.jpg" title="Vaccinium corymbosum Beeren.jpg">
+        <span class="img-label">4. Vaccinium corymbosum Beeren.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Blueberries" value="https://upload.wikimedia.org/wikipedia/commons/0/09/Vaccinium_corymbosum_NBG_LR.jpg" data-plant="Blueberries">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Vaccinium_corymbosum_NBG_LR.jpg/500px-Vaccinium_corymbosum_NBG_LR.jpg" alt="Vaccinium corymbosum NBG LR.jpg" title="Vaccinium corymbosum NBG LR.jpg">
+        <span class="img-label">5. Vaccinium corymbosum NBG LR.jpg</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Mexican Orange</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Mexican Orange" value="https://upload.wikimedia.org/wikipedia/commons/c/c1/%28MHNT%29_Choisya_ternata_-_Inflorescence_immature_et_feuilles.jpg" data-plant="Mexican Orange">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/%28MHNT%29_Choisya_ternata_-_Inflorescence_immature_et_feuilles.jpg/500px-%28MHNT%29_Choisya_ternata_-_Inflorescence_immature_et_feuilles.jpg" alt="(MHNT) Choisya ternata - Inflorescence immature et feuilles.jpg" title="(MHNT) Choisya ternata - Inflorescence immature et feuilles.jpg">
+        <span class="img-label">1. (MHNT) Choisya ternata - Inflorescence immature et</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Mexican Orange" value="https://upload.wikimedia.org/wikipedia/commons/6/69/%28MHNT%29_Choisya_ternata_-_flowers_and_leaves.jpg" data-plant="Mexican Orange">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/%28MHNT%29_Choisya_ternata_-_flowers_and_leaves.jpg/500px-%28MHNT%29_Choisya_ternata_-_flowers_and_leaves.jpg" alt="(MHNT) Choisya ternata - flowers and leaves.jpg" title="(MHNT) Choisya ternata - flowers and leaves.jpg">
+        <span class="img-label">2. (MHNT) Choisya ternata - flowers and leaves.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Mexican Orange" value="https://upload.wikimedia.org/wikipedia/commons/e/e1/Choisya_Inflorescence_FR_2013.jpg" data-plant="Mexican Orange">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Choisya_Inflorescence_FR_2013.jpg/500px-Choisya_Inflorescence_FR_2013.jpg" alt="Choisya Inflorescence FR 2013.jpg" title="Choisya Inflorescence FR 2013.jpg">
+        <span class="img-label">3. Choisya Inflorescence FR 2013.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Mexican Orange" value="https://upload.wikimedia.org/wikipedia/commons/a/a2/Choisya_ternata_kz01.jpg" data-plant="Mexican Orange">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Choisya_ternata_kz01.jpg/500px-Choisya_ternata_kz01.jpg" alt="Choisya ternata kz01.jpg" title="Choisya ternata kz01.jpg">
+        <span class="img-label">4. Choisya ternata kz01.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Mexican Orange" value="https://upload.wikimedia.org/wikipedia/commons/9/91/Hortus_Haren_%28Groningen%29_20-04-2025._%28actm.%29_04.jpg" data-plant="Mexican Orange">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Hortus_Haren_%28Groningen%29_20-04-2025._%28actm.%29_04.jpg/500px-Hortus_Haren_%28Groningen%29_20-04-2025._%28actm.%29_04.jpg" alt="Hortus Haren (Groningen) 20-04-2025. (actm.) 04.jpg" title="Hortus Haren (Groningen) 20-04-2025. (actm.) 04.jpg">
+        <span class="img-label">5. Hortus Haren (Groningen) 20-04-2025. (actm.) 04.jp</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Pacific Wax Myrtle</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Pacific Wax Myrtle" value="https://upload.wikimedia.org/wikipedia/commons/f/fe/Myrica_californica.jpg" data-plant="Pacific Wax Myrtle">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Myrica_californica.jpg/500px-Myrica_californica.jpg" alt="Myrica californica.jpg" title="Myrica californica.jpg">
+        <span class="img-label">1. Myrica californica.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Pacific Wax Myrtle" value="https://upload.wikimedia.org/wikipedia/commons/c/cb/Myrica_californica_kz1.jpg" data-plant="Pacific Wax Myrtle">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Myrica_californica_kz1.jpg/500px-Myrica_californica_kz1.jpg" alt="Myrica californica kz1.jpg" title="Myrica californica kz1.jpg">
+        <span class="img-label">2. Myrica californica kz1.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Pacific Wax Myrtle" value="https://upload.wikimedia.org/wikipedia/commons/6/67/Myrica_californica_kz2.jpg" data-plant="Pacific Wax Myrtle">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Myrica_californica_kz2.jpg/500px-Myrica_californica_kz2.jpg" alt="Myrica californica kz2.jpg" title="Myrica californica kz2.jpg">
+        <span class="img-label">3. Myrica californica kz2.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Pacific Wax Myrtle" value="https://upload.wikimedia.org/wikipedia/commons/3/33/Myrica_californica_kz3.jpg" data-plant="Pacific Wax Myrtle">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Myrica_californica_kz3.jpg/500px-Myrica_californica_kz3.jpg" alt="Myrica californica kz3.jpg" title="Myrica californica kz3.jpg">
+        <span class="img-label">4. Myrica californica kz3.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Pacific Wax Myrtle" value="https://upload.wikimedia.org/wikipedia/commons/f/f9/Myrica_californica_kz4.jpg" data-plant="Pacific Wax Myrtle">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Myrica_californica_kz4.jpg/500px-Myrica_californica_kz4.jpg" alt="Myrica californica kz4.jpg" title="Myrica californica kz4.jpg">
+        <span class="img-label">5. Myrica californica kz4.jpg</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Dwarf Pittosporum</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Dwarf Pittosporum" value="https://upload.wikimedia.org/wikipedia/commons/d/dd/Japanese_Cheesewood_--_Pittosporum_tobira.jpg" data-plant="Dwarf Pittosporum">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Japanese_Cheesewood_--_Pittosporum_tobira.jpg/500px-Japanese_Cheesewood_--_Pittosporum_tobira.jpg" alt="Japanese Cheesewood -- Pittosporum tobira.jpg" title="Japanese Cheesewood -- Pittosporum tobira.jpg">
+        <span class="img-label">1. Japanese Cheesewood -- Pittosporum tobira.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Dwarf Pittosporum" value="https://upload.wikimedia.org/wikipedia/commons/3/3e/Pittosporum_Tobira_JPG0.jpg" data-plant="Dwarf Pittosporum">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Pittosporum_Tobira_JPG0.jpg/500px-Pittosporum_Tobira_JPG0.jpg" alt="Pittosporum Tobira JPG0.jpg" title="Pittosporum Tobira JPG0.jpg">
+        <span class="img-label">2. Pittosporum Tobira JPG0.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Dwarf Pittosporum" value="https://upload.wikimedia.org/wikipedia/commons/f/fa/Pittosporum_tobira_%28Thunb.%29_W._T._Aliton_JdP.jpg" data-plant="Dwarf Pittosporum">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Pittosporum_tobira_%28Thunb.%29_W._T._Aliton_JdP.jpg/500px-Pittosporum_tobira_%28Thunb.%29_W._T._Aliton_JdP.jpg" alt="Pittosporum tobira (Thunb.) W. T. Aliton JdP.jpg" title="Pittosporum tobira (Thunb.) W. T. Aliton JdP.jpg">
+        <span class="img-label">3. Pittosporum tobira (Thunb.) W. T. Aliton JdP.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Dwarf Pittosporum" value="https://upload.wikimedia.org/wikipedia/commons/c/cd/Pittosporum_tobira_kz01.jpg" data-plant="Dwarf Pittosporum">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Pittosporum_tobira_kz01.jpg/500px-Pittosporum_tobira_kz01.jpg" alt="Pittosporum tobira kz01.jpg" title="Pittosporum tobira kz01.jpg">
+        <span class="img-label">4. Pittosporum tobira kz01.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Dwarf Pittosporum" value="https://upload.wikimedia.org/wikipedia/commons/1/10/Pittosporum_tobira_kz02.jpg" data-plant="Dwarf Pittosporum">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Pittosporum_tobira_kz02.jpg/500px-Pittosporum_tobira_kz02.jpg" alt="Pittosporum tobira kz02.jpg" title="Pittosporum tobira kz02.jpg">
+        <span class="img-label">5. Pittosporum tobira kz02.jpg</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Garden Sage</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Garden Sage" value="https://upload.wikimedia.org/wikipedia/commons/5/5a/Salvia_officinalis0.jpg" data-plant="Garden Sage">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Salvia_officinalis0.jpg/500px-Salvia_officinalis0.jpg" alt="Salvia officinalis0.jpg" title="Salvia officinalis0.jpg">
+        <span class="img-label">1. Salvia officinalis0.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Garden Sage" value="https://upload.wikimedia.org/wikipedia/commons/8/84/Salvia_officinalis_Echter_Mehltau-2-_Josef_Schlaghecken.jpg" data-plant="Garden Sage">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Salvia_officinalis_Echter_Mehltau-2-_Josef_Schlaghecken.jpg/500px-Salvia_officinalis_Echter_Mehltau-2-_Josef_Schlaghecken.jpg" alt="Salvia officinalis Echter Mehltau-2- Josef Schlaghecken.jpg" title="Salvia officinalis Echter Mehltau-2- Josef Schlaghecken.jpg">
+        <span class="img-label">2. Salvia officinalis Echter Mehltau-2- Josef Schlagh</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Garden Sage" value="https://upload.wikimedia.org/wikipedia/commons/6/6a/Salvia_officinalis_Echter_Mehltau-3-_Josef_Schlaghecken.jpg" data-plant="Garden Sage">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Salvia_officinalis_Echter_Mehltau-3-_Josef_Schlaghecken.jpg/500px-Salvia_officinalis_Echter_Mehltau-3-_Josef_Schlaghecken.jpg" alt="Salvia officinalis Echter Mehltau-3- Josef Schlaghecken.jpg" title="Salvia officinalis Echter Mehltau-3- Josef Schlaghecken.jpg">
+        <span class="img-label">3. Salvia officinalis Echter Mehltau-3- Josef Schlagh</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Garden Sage" value="https://upload.wikimedia.org/wikipedia/commons/1/18/Salvia_officinalis_L._3355742911.jpg" data-plant="Garden Sage">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Salvia_officinalis_L._3355742911.jpg/500px-Salvia_officinalis_L._3355742911.jpg" alt="Salvia officinalis L. 3355742911.jpg" title="Salvia officinalis L. 3355742911.jpg">
+        <span class="img-label">4. Salvia officinalis L. 3355742911.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Garden Sage" value="https://upload.wikimedia.org/wikipedia/commons/f/f4/Salvia_officinalis_in_Cardaillac_%281%29.jpg" data-plant="Garden Sage">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Salvia_officinalis_in_Cardaillac_%281%29.jpg/500px-Salvia_officinalis_in_Cardaillac_%281%29.jpg" alt="Salvia officinalis in Cardaillac (1).jpg" title="Salvia officinalis in Cardaillac (1).jpg">
+        <span class="img-label">5. Salvia officinalis in Cardaillac (1).jpg</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Common Thyme</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Common Thyme" value="https://upload.wikimedia.org/wikipedia/commons/4/4e/Eristalinus_aeneus_on_Thymus_vulgaris%2C_S%C3%A8te_03.jpg" data-plant="Common Thyme">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Eristalinus_aeneus_on_Thymus_vulgaris%2C_S%C3%A8te_03.jpg/500px-Eristalinus_aeneus_on_Thymus_vulgaris%2C_S%C3%A8te_03.jpg" alt="Eristalinus aeneus on Thymus vulgaris, Sète 03.jpg" title="Eristalinus aeneus on Thymus vulgaris, Sète 03.jpg">
+        <span class="img-label">1. Eristalinus aeneus on Thymus vulgaris, Sète 03.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Common Thyme" value="https://upload.wikimedia.org/wikipedia/commons/7/7e/THYMUS_VULGARIS_-_AGUDA_-_IB-910_%28Tim%C3%B3%29.JPG" data-plant="Common Thyme">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/THYMUS_VULGARIS_-_AGUDA_-_IB-910_%28Tim%C3%B3%29.JPG/500px-THYMUS_VULGARIS_-_AGUDA_-_IB-910_%28Tim%C3%B3%29.JPG" alt="THYMUS VULGARIS - AGUDA - IB-910 (Timó).JPG" title="THYMUS VULGARIS - AGUDA - IB-910 (Timó).JPG">
+        <span class="img-label">2. THYMUS VULGARIS - AGUDA - IB-910 (Timó).JPG</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Common Thyme" value="https://upload.wikimedia.org/wikipedia/commons/4/4a/Thymian_%28Thymus_vulgaris%29%2C_Nationalpark_Hohe_Tauern.jpg" data-plant="Common Thyme">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Thymian_%28Thymus_vulgaris%29%2C_Nationalpark_Hohe_Tauern.jpg/500px-Thymian_%28Thymus_vulgaris%29%2C_Nationalpark_Hohe_Tauern.jpg" alt="Thymian (Thymus vulgaris), Nationalpark Hohe Tauern.jpg" title="Thymian (Thymus vulgaris), Nationalpark Hohe Tauern.jpg">
+        <span class="img-label">3. Thymian (Thymus vulgaris), Nationalpark Hohe Tauer</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Common Thyme" value="https://upload.wikimedia.org/wikipedia/commons/1/12/Thymus_vulgaris_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-271.jpg" data-plant="Common Thyme">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Thymus_vulgaris_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-271.jpg" alt="Thymus vulgaris - Köhler–s Medizinal-Pflanzen-271.jpg" title="Thymus vulgaris - Köhler–s Medizinal-Pflanzen-271.jpg">
+        <span class="img-label">4. Thymus vulgaris - Köhler–s Medizinal-Pflanzen-271.</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Common Thyme" value="https://upload.wikimedia.org/wikipedia/commons/f/f9/Thymus_vulgaris_2601.JPG" data-plant="Common Thyme">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Thymus_vulgaris_2601.JPG/500px-Thymus_vulgaris_2601.JPG" alt="Thymus vulgaris 2601.JPG" title="Thymus vulgaris 2601.JPG">
+        <span class="img-label">5. Thymus vulgaris 2601.JPG</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Maple</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Maple" value="https://upload.wikimedia.org/wikipedia/commons/1/1c/Acer_circinatum_10751.JPG" data-plant="Maple">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Acer_circinatum_10751.JPG/500px-Acer_circinatum_10751.JPG" alt="Acer circinatum 10751.JPG" title="Acer circinatum 10751.JPG">
+        <span class="img-label">1. Acer circinatum 10751.JPG</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Maple" value="https://upload.wikimedia.org/wikipedia/commons/2/26/Acer_circinatum_26294.JPG" data-plant="Maple">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Acer_circinatum_26294.JPG/500px-Acer_circinatum_26294.JPG" alt="Acer circinatum 26294.JPG" title="Acer circinatum 26294.JPG">
+        <span class="img-label">2. Acer circinatum 26294.JPG</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Maple" value="https://upload.wikimedia.org/wikipedia/commons/6/6f/Acer_circinatum_9468.JPG" data-plant="Maple">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Acer_circinatum_9468.JPG/500px-Acer_circinatum_9468.JPG" alt="Acer circinatum 9468.JPG" title="Acer circinatum 9468.JPG">
+        <span class="img-label">3. Acer circinatum 9468.JPG</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Maple" value="https://upload.wikimedia.org/wikipedia/commons/a/a3/Vine_Maple_%28Acer_circinatum%29_3049.jpg" data-plant="Maple">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Vine_Maple_%28Acer_circinatum%29_3049.jpg/500px-Vine_Maple_%28Acer_circinatum%29_3049.jpg" alt="Vine Maple (Acer circinatum) 3049.jpg" title="Vine Maple (Acer circinatum) 3049.jpg">
+        <span class="img-label">4. Vine Maple (Acer circinatum) 3049.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Maple" value="https://upload.wikimedia.org/wikipedia/commons/8/88/Vine_Maple_leaves_and_flowers.jpg" data-plant="Maple">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Vine_Maple_leaves_and_flowers.jpg/500px-Vine_Maple_leaves_and_flowers.jpg" alt="Vine Maple leaves and flowers.jpg" title="Vine Maple leaves and flowers.jpg">
+        <span class="img-label">5. Vine Maple leaves and flowers.jpg</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Apple</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Apple" value="https://upload.wikimedia.org/wikipedia/commons/1/1a/Malus_domestica_%27Stark%27s_Earliest%27._Locatie_De_Kruidhof_02.JPG" data-plant="Apple">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Malus_domestica_%27Stark%27s_Earliest%27._Locatie_De_Kruidhof_02.JPG/500px-Malus_domestica_%27Stark%27s_Earliest%27._Locatie_De_Kruidhof_02.JPG" alt="Malus domestica 'Stark's Earliest'. Locatie De Kruidhof 02.JPG" title="Malus domestica 'Stark's Earliest'. Locatie De Kruidhof 02.JPG">
+        <span class="img-label">1. Malus domestica 'Stark's Earliest'. Locatie De Kru</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Apple" value="https://upload.wikimedia.org/wikipedia/commons/e/ee/Malus_domestica_%28Apple%29_flowers_2.jpg" data-plant="Apple">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Malus_domestica_%28Apple%29_flowers_2.jpg/500px-Malus_domestica_%28Apple%29_flowers_2.jpg" alt="Malus domestica (Apple) flowers 2.jpg" title="Malus domestica (Apple) flowers 2.jpg">
+        <span class="img-label">2. Malus domestica (Apple) flowers 2.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Apple" value="https://upload.wikimedia.org/wikipedia/commons/4/4f/Malus_domestica_%28Apple%29_flowers_3.jpg" data-plant="Apple">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Malus_domestica_%28Apple%29_flowers_3.jpg/500px-Malus_domestica_%28Apple%29_flowers_3.jpg" alt="Malus domestica (Apple) flowers 3.jpg" title="Malus domestica (Apple) flowers 3.jpg">
+        <span class="img-label">3. Malus domestica (Apple) flowers 3.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Apple" value="https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg" data-plant="Apple">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Red_Apple.jpg/500px-Red_Apple.jpg" alt="Red Apple.jpg" title="Red Apple.jpg">
+        <span class="img-label">4. Red Apple.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Apple" value="https://upload.wikimedia.org/wikipedia/commons/8/81/Siemianowice_Malus_domestica_bark.jpg" data-plant="Apple">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Siemianowice_Malus_domestica_bark.jpg/500px-Siemianowice_Malus_domestica_bark.jpg" alt="Siemianowice Malus domestica bark.jpg" title="Siemianowice Malus domestica bark.jpg">
+        <span class="img-label">5. Siemianowice Malus domestica bark.jpg</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Chocolate Vine</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Chocolate Vine" value="https://upload.wikimedia.org/wikipedia/commons/9/95/Akebia_quinata_%28young_fruits%29.jpg" data-plant="Chocolate Vine">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Akebia_quinata_%28young_fruits%29.jpg/500px-Akebia_quinata_%28young_fruits%29.jpg" alt="Akebia quinata (young fruits).jpg" title="Akebia quinata (young fruits).jpg">
+        <span class="img-label">1. Akebia quinata (young fruits).jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Chocolate Vine" value="https://upload.wikimedia.org/wikipedia/commons/4/43/Akebia_quinata_%28young_leaf%29.jpg" data-plant="Chocolate Vine">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Akebia_quinata_%28young_leaf%29.jpg/500px-Akebia_quinata_%28young_leaf%29.jpg" alt="Akebia quinata (young leaf).jpg" title="Akebia quinata (young leaf).jpg">
+        <span class="img-label">2. Akebia quinata (young leaf).jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Chocolate Vine" value="https://upload.wikimedia.org/wikipedia/commons/e/e7/Akebia_quinata_001.JPG" data-plant="Chocolate Vine">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Akebia_quinata_001.JPG/500px-Akebia_quinata_001.JPG" alt="Akebia quinata 001.JPG" title="Akebia quinata 001.JPG">
+        <span class="img-label">3. Akebia quinata 001.JPG</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Chocolate Vine" value="https://upload.wikimedia.org/wikipedia/commons/8/89/Akebia_quinata_02.JPG" data-plant="Chocolate Vine">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Akebia_quinata_02.JPG/500px-Akebia_quinata_02.JPG" alt="Akebia quinata 02.JPG" title="Akebia quinata 02.JPG">
+        <span class="img-label">4. Akebia quinata 02.JPG</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Chocolate Vine" value="https://upload.wikimedia.org/wikipedia/commons/7/76/Akebia_quinata_Akebia_pi%C4%99ciolistkowa_2023-04-23_05.jpg" data-plant="Chocolate Vine">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Akebia_quinata_Akebia_pi%C4%99ciolistkowa_2023-04-23_05.jpg/500px-Akebia_quinata_Akebia_pi%C4%99ciolistkowa_2023-04-23_05.jpg" alt="Akebia quinata Akebia pięciolistkowa 2023-04-23 05.jpg" title="Akebia quinata Akebia pięciolistkowa 2023-04-23 05.jpg">
+        <span class="img-label">5. Akebia quinata Akebia pięciolistkowa 2023-04-23 05</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Deer Fern</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Deer Fern" value="https://upload.wikimedia.org/wikipedia/commons/1/1e/Blechnum_spicant_%28fertile_and_sterile_fronts%29.jpg" data-plant="Deer Fern">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Blechnum_spicant_%28fertile_and_sterile_fronts%29.jpg/500px-Blechnum_spicant_%28fertile_and_sterile_fronts%29.jpg" alt="Blechnum spicant (fertile and sterile fronts).jpg" title="Blechnum spicant (fertile and sterile fronts).jpg">
+        <span class="img-label">1. Blechnum spicant (fertile and sterile fronts).jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Deer Fern" value="https://upload.wikimedia.org/wikipedia/commons/b/b8/Blechnum_spicant_RF.jpg" data-plant="Deer Fern">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Blechnum_spicant_RF.jpg/500px-Blechnum_spicant_RF.jpg" alt="Blechnum spicant RF.jpg" title="Blechnum spicant RF.jpg">
+        <span class="img-label">2. Blechnum spicant RF.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Deer Fern" value="https://upload.wikimedia.org/wikipedia/commons/8/82/Blechnum_spicant_kz03.jpg" data-plant="Deer Fern">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Blechnum_spicant_kz03.jpg/500px-Blechnum_spicant_kz03.jpg" alt="Blechnum spicant kz03.jpg" title="Blechnum spicant kz03.jpg">
+        <span class="img-label">3. Blechnum spicant kz03.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Deer Fern" value="https://upload.wikimedia.org/wikipedia/commons/8/89/Blechnum_spicant_kz04.jpg" data-plant="Deer Fern">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Blechnum_spicant_kz04.jpg/500px-Blechnum_spicant_kz04.jpg" alt="Blechnum spicant kz04.jpg" title="Blechnum spicant kz04.jpg">
+        <span class="img-label">4. Blechnum spicant kz04.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Deer Fern" value="https://upload.wikimedia.org/wikipedia/commons/a/a0/Blechnum_spicant_kz05.jpg" data-plant="Deer Fern">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Blechnum_spicant_kz05.jpg/500px-Blechnum_spicant_kz05.jpg" alt="Blechnum spicant kz05.jpg" title="Blechnum spicant kz05.jpg">
+        <span class="img-label">5. Blechnum spicant kz05.jpg</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Western Sword Fern</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Western Sword Fern" value="https://upload.wikimedia.org/wikipedia/commons/8/8d/Polystichum_munitum_%28Jami_Dwyer%29_001.jpg" data-plant="Western Sword Fern">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Polystichum_munitum_%28Jami_Dwyer%29_001.jpg/500px-Polystichum_munitum_%28Jami_Dwyer%29_001.jpg" alt="Polystichum munitum (Jami Dwyer) 001.jpg" title="Polystichum munitum (Jami Dwyer) 001.jpg">
+        <span class="img-label">1. Polystichum munitum (Jami Dwyer) 001.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Western Sword Fern" value="https://upload.wikimedia.org/wikipedia/commons/3/36/Polystichum_munitum_kz01.jpg" data-plant="Western Sword Fern">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Polystichum_munitum_kz01.jpg/500px-Polystichum_munitum_kz01.jpg" alt="Polystichum munitum kz01.jpg" title="Polystichum munitum kz01.jpg">
+        <span class="img-label">2. Polystichum munitum kz01.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Western Sword Fern" value="https://upload.wikimedia.org/wikipedia/commons/9/98/Polystichum_munitum_kz03.jpg" data-plant="Western Sword Fern">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Polystichum_munitum_kz03.jpg/500px-Polystichum_munitum_kz03.jpg" alt="Polystichum munitum kz03.jpg" title="Polystichum munitum kz03.jpg">
+        <span class="img-label">3. Polystichum munitum kz03.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Western Sword Fern" value="https://upload.wikimedia.org/wikipedia/commons/4/42/Polystichum_munitum_kz04.jpg" data-plant="Western Sword Fern">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Polystichum_munitum_kz04.jpg/500px-Polystichum_munitum_kz04.jpg" alt="Polystichum munitum kz04.jpg" title="Polystichum munitum kz04.jpg">
+        <span class="img-label">4. Polystichum munitum kz04.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Western Sword Fern" value="https://upload.wikimedia.org/wikipedia/commons/f/fb/Polystichum_munitum_kz05.jpg" data-plant="Western Sword Fern">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Polystichum_munitum_kz05.jpg/500px-Polystichum_munitum_kz05.jpg" alt="Polystichum munitum kz05.jpg" title="Polystichum munitum kz05.jpg">
+        <span class="img-label">5. Polystichum munitum kz05.jpg</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Karl Foerster Grass</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Karl Foerster Grass" value="https://upload.wikimedia.org/wikipedia/commons/2/2c/Calamagrostis_x_acutiflora_%27Karl_Foerster%27.jpg" data-plant="Karl Foerster Grass">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Calamagrostis_x_acutiflora_%27Karl_Foerster%27.jpg/500px-Calamagrostis_x_acutiflora_%27Karl_Foerster%27.jpg" alt="Calamagrostis x acutiflora 'Karl Foerster'.jpg" title="Calamagrostis x acutiflora 'Karl Foerster'.jpg">
+        <span class="img-label">1. Calamagrostis x acutiflora 'Karl Foerster'.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Karl Foerster Grass" value="https://upload.wikimedia.org/wikipedia/commons/c/cb/Calamagrostis_x_acutiflora_Karl_Foerster_0zz.jpg" data-plant="Karl Foerster Grass">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Calamagrostis_x_acutiflora_Karl_Foerster_0zz.jpg/500px-Calamagrostis_x_acutiflora_Karl_Foerster_0zz.jpg" alt="Calamagrostis x acutiflora Karl Foerster 0zz.jpg" title="Calamagrostis x acutiflora Karl Foerster 0zz.jpg">
+        <span class="img-label">2. Calamagrostis x acutiflora Karl Foerster 0zz.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Karl Foerster Grass" value="https://upload.wikimedia.org/wikipedia/commons/8/85/Calamagrostis_x_acutiflora_Karl_Foerster_1zz.jpg" data-plant="Karl Foerster Grass">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Calamagrostis_x_acutiflora_Karl_Foerster_1zz.jpg/500px-Calamagrostis_x_acutiflora_Karl_Foerster_1zz.jpg" alt="Calamagrostis x acutiflora Karl Foerster 1zz.jpg" title="Calamagrostis x acutiflora Karl Foerster 1zz.jpg">
+        <span class="img-label">3. Calamagrostis x acutiflora Karl Foerster 1zz.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Karl Foerster Grass" value="https://upload.wikimedia.org/wikipedia/commons/0/09/Calamagrostis_x_acutiflora_Karl_Foerster_2zz.jpg" data-plant="Karl Foerster Grass">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Calamagrostis_x_acutiflora_Karl_Foerster_2zz.jpg/500px-Calamagrostis_x_acutiflora_Karl_Foerster_2zz.jpg" alt="Calamagrostis x acutiflora Karl Foerster 2zz.jpg" title="Calamagrostis x acutiflora Karl Foerster 2zz.jpg">
+        <span class="img-label">4. Calamagrostis x acutiflora Karl Foerster 2zz.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Karl Foerster Grass" value="https://upload.wikimedia.org/wikipedia/commons/3/3c/Calamagrostis_x_acutiflora_Karl_Foerster_3zz.jpg" data-plant="Karl Foerster Grass">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Calamagrostis_x_acutiflora_Karl_Foerster_3zz.jpg/500px-Calamagrostis_x_acutiflora_Karl_Foerster_3zz.jpg" alt="Calamagrostis x acutiflora Karl Foerster 3zz.jpg" title="Calamagrostis x acutiflora Karl Foerster 3zz.jpg">
+        <span class="img-label">5. Calamagrostis x acutiflora Karl Foerster 3zz.jpg</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Creeping Jenny</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Creeping Jenny" value="https://upload.wikimedia.org/wikipedia/commons/9/9b/Lysimachia_nummularia0.jpg" data-plant="Creeping Jenny">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Lysimachia_nummularia0.jpg/500px-Lysimachia_nummularia0.jpg" alt="Lysimachia nummularia0.jpg" title="Lysimachia nummularia0.jpg">
+        <span class="img-label">1. Lysimachia nummularia0.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Creeping Jenny" value="https://upload.wikimedia.org/wikipedia/commons/b/bd/Lysimachia_nummularia20140609_48.jpg" data-plant="Creeping Jenny">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Lysimachia_nummularia20140609_48.jpg/500px-Lysimachia_nummularia20140609_48.jpg" alt="Lysimachia nummularia20140609 48.jpg" title="Lysimachia nummularia20140609 48.jpg">
+        <span class="img-label">2. Lysimachia nummularia20140609 48.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Creeping Jenny" value="https://upload.wikimedia.org/wikipedia/commons/8/89/Lysimachia_nummularia_128788213.jpg" data-plant="Creeping Jenny">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Lysimachia_nummularia_128788213.jpg/500px-Lysimachia_nummularia_128788213.jpg" alt="Lysimachia nummularia 128788213.jpg" title="Lysimachia nummularia 128788213.jpg">
+        <span class="img-label">3. Lysimachia nummularia 128788213.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Creeping Jenny" value="https://upload.wikimedia.org/wikipedia/commons/5/50/Lysimachia_nummularia_128788229.jpg" data-plant="Creeping Jenny">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Lysimachia_nummularia_128788229.jpg/500px-Lysimachia_nummularia_128788229.jpg" alt="Lysimachia nummularia 128788229.jpg" title="Lysimachia nummularia 128788229.jpg">
+        <span class="img-label">4. Lysimachia nummularia 128788229.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Creeping Jenny" value="https://upload.wikimedia.org/wikipedia/commons/0/03/Lysimachia_nummularia_129231199.jpg" data-plant="Creeping Jenny">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Lysimachia_nummularia_129231199.jpg/500px-Lysimachia_nummularia_129231199.jpg" alt="Lysimachia nummularia 129231199.jpg" title="Lysimachia nummularia 129231199.jpg">
+        <span class="img-label">5. Lysimachia nummularia 129231199.jpg</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Kinnikinnick</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Kinnikinnick" value="https://upload.wikimedia.org/wikipedia/commons/d/d8/Arctostaphylos_uva-ursi_25924.JPG" data-plant="Kinnikinnick">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Arctostaphylos_uva-ursi_25924.JPG/500px-Arctostaphylos_uva-ursi_25924.JPG" alt="Arctostaphylos uva-ursi 25924.JPG" title="Arctostaphylos uva-ursi 25924.JPG">
+        <span class="img-label">1. Arctostaphylos uva-ursi 25924.JPG</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Kinnikinnick" value="https://upload.wikimedia.org/wikipedia/commons/8/8a/Arctostaphylos_uva-ursi_2_RF.jpg" data-plant="Kinnikinnick">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Arctostaphylos_uva-ursi_2_RF.jpg/500px-Arctostaphylos_uva-ursi_2_RF.jpg" alt="Arctostaphylos uva-ursi 2 RF.jpg" title="Arctostaphylos uva-ursi 2 RF.jpg">
+        <span class="img-label">2. Arctostaphylos uva-ursi 2 RF.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Kinnikinnick" value="https://upload.wikimedia.org/wikipedia/commons/f/f2/Arctostaphylos_uva-ursi_4_RF.jpg" data-plant="Kinnikinnick">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Arctostaphylos_uva-ursi_4_RF.jpg/500px-Arctostaphylos_uva-ursi_4_RF.jpg" alt="Arctostaphylos uva-ursi 4 RF.jpg" title="Arctostaphylos uva-ursi 4 RF.jpg">
+        <span class="img-label">3. Arctostaphylos uva-ursi 4 RF.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Kinnikinnick" value="https://upload.wikimedia.org/wikipedia/commons/0/0f/Arctostaphylos_uva-ursi_LC0146.jpg" data-plant="Kinnikinnick">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Arctostaphylos_uva-ursi_LC0146.jpg/500px-Arctostaphylos_uva-ursi_LC0146.jpg" alt="Arctostaphylos uva-ursi LC0146.jpg" title="Arctostaphylos uva-ursi LC0146.jpg">
+        <span class="img-label">4. Arctostaphylos uva-ursi LC0146.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Kinnikinnick" value="https://upload.wikimedia.org/wikipedia/commons/c/c4/Arctostaphylos_uva-ursi_MHNT.BOT.2007.52.24.jpg" data-plant="Kinnikinnick">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Arctostaphylos_uva-ursi_MHNT.BOT.2007.52.24.jpg/500px-Arctostaphylos_uva-ursi_MHNT.BOT.2007.52.24.jpg" alt="Arctostaphylos uva-ursi MHNT.BOT.2007.52.24.jpg" title="Arctostaphylos uva-ursi MHNT.BOT.2007.52.24.jpg">
+        <span class="img-label">5. Arctostaphylos uva-ursi MHNT.BOT.2007.52.24.jpg</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Strawberries</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Strawberries" value="https://upload.wikimedia.org/wikipedia/commons/c/c1/Fragaria_vesca_-_metsmaasikas.jpg" data-plant="Strawberries">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Fragaria_vesca_-_metsmaasikas.jpg/500px-Fragaria_vesca_-_metsmaasikas.jpg" alt="Fragaria vesca - metsmaasikas.jpg" title="Fragaria vesca - metsmaasikas.jpg">
+        <span class="img-label">1. Fragaria vesca - metsmaasikas.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Strawberries" value="https://upload.wikimedia.org/wikipedia/commons/e/ee/Fragaria_vesca_5048.JPG" data-plant="Strawberries">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Fragaria_vesca_5048.JPG/500px-Fragaria_vesca_5048.JPG" alt="Fragaria vesca 5048.JPG" title="Fragaria vesca 5048.JPG">
+        <span class="img-label">2. Fragaria vesca 5048.JPG</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Strawberries" value="https://upload.wikimedia.org/wikipedia/commons/7/7a/Fragaria_vesca_fruit_-_Keila.jpg" data-plant="Strawberries">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Fragaria_vesca_fruit_-_Keila.jpg/500px-Fragaria_vesca_fruit_-_Keila.jpg" alt="Fragaria vesca fruit - Keila.jpg" title="Fragaria vesca fruit - Keila.jpg">
+        <span class="img-label">3. Fragaria vesca fruit - Keila.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Strawberries" value="https://upload.wikimedia.org/wikipedia/commons/d/de/FraiseFruitPhoto.jpg" data-plant="Strawberries">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/FraiseFruitPhoto.jpg" alt="FraiseFruitPhoto.jpg" title="FraiseFruitPhoto.jpg">
+        <span class="img-label">4. FraiseFruitPhoto.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Strawberries" value="https://upload.wikimedia.org/wikipedia/commons/e/ef/Garden_strawberry_%28Fragaria_%C3%97_ananassa%29_halved.jpg" data-plant="Strawberries">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Garden_strawberry_%28Fragaria_%C3%97_ananassa%29_halved.jpg/500px-Garden_strawberry_%28Fragaria_%C3%97_ananassa%29_halved.jpg" alt="Garden strawberry (Fragaria × ananassa) halved.jpg" title="Garden strawberry (Fragaria × ananassa) halved.jpg">
+        <span class="img-label">5. Garden strawberry (Fragaria × ananassa) halved.jpg</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Golden Oregano</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Golden Oregano" value="https://upload.wikimedia.org/wikipedia/commons/8/8f/Origanum_vulgare_%27Aureum%27_kz01.jpg" data-plant="Golden Oregano">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Origanum_vulgare_%27Aureum%27_kz01.jpg/500px-Origanum_vulgare_%27Aureum%27_kz01.jpg" alt="Origanum vulgare 'Aureum' kz01.jpg" title="Origanum vulgare 'Aureum' kz01.jpg">
+        <span class="img-label">1. Origanum vulgare 'Aureum' kz01.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Golden Oregano" value="https://upload.wikimedia.org/wikipedia/commons/e/ef/Origanum_vulgare_Aureum_BotGardBln07122011E.jpg" data-plant="Golden Oregano">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Origanum_vulgare_Aureum_BotGardBln07122011E.jpg/500px-Origanum_vulgare_Aureum_BotGardBln07122011E.jpg" alt="Origanum vulgare Aureum BotGardBln07122011E.jpg" title="Origanum vulgare Aureum BotGardBln07122011E.jpg">
+        <span class="img-label">2. Origanum vulgare Aureum BotGardBln07122011E.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Golden Oregano" value="https://upload.wikimedia.org/wikipedia/commons/5/5f/Origanum_vulgare_aureum_0zz.jpg" data-plant="Golden Oregano">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Origanum_vulgare_aureum_0zz.jpg/500px-Origanum_vulgare_aureum_0zz.jpg" alt="Origanum vulgare aureum 0zz.jpg" title="Origanum vulgare aureum 0zz.jpg">
+        <span class="img-label">3. Origanum vulgare aureum 0zz.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Golden Oregano" value="https://upload.wikimedia.org/wikipedia/commons/b/bd/Origanum_vulgare_aureum_1zz.jpg" data-plant="Golden Oregano">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Origanum_vulgare_aureum_1zz.jpg/500px-Origanum_vulgare_aureum_1zz.jpg" alt="Origanum vulgare aureum 1zz.jpg" title="Origanum vulgare aureum 1zz.jpg">
+        <span class="img-label">4. Origanum vulgare aureum 1zz.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Golden Oregano" value="https://upload.wikimedia.org/wikipedia/commons/a/ab/Origanum_vulgare_aureum_2zz.jpg" data-plant="Golden Oregano">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Origanum_vulgare_aureum_2zz.jpg/500px-Origanum_vulgare_aureum_2zz.jpg" alt="Origanum vulgare aureum 2zz.jpg" title="Origanum vulgare aureum 2zz.jpg">
+        <span class="img-label">5. Origanum vulgare aureum 2zz.jpg</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Japanese Pachysandra</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Japanese Pachysandra" value="https://upload.wikimedia.org/wikipedia/commons/5/56/Pachysandra_terminalis0.jpg" data-plant="Japanese Pachysandra">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Pachysandra_terminalis0.jpg/500px-Pachysandra_terminalis0.jpg" alt="Pachysandra terminalis0.jpg" title="Pachysandra terminalis0.jpg">
+        <span class="img-label">1. Pachysandra terminalis0.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Japanese Pachysandra" value="https://upload.wikimedia.org/wikipedia/commons/6/61/Pachysandra_terminalis_%27Compacta%27_kz01.jpg" data-plant="Japanese Pachysandra">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Pachysandra_terminalis_%27Compacta%27_kz01.jpg/500px-Pachysandra_terminalis_%27Compacta%27_kz01.jpg" alt="Pachysandra terminalis 'Compacta' kz01.jpg" title="Pachysandra terminalis 'Compacta' kz01.jpg">
+        <span class="img-label">2. Pachysandra terminalis 'Compacta' kz01.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Japanese Pachysandra" value="https://upload.wikimedia.org/wikipedia/commons/f/f7/Pachysandra_terminalis_%27Compacta%27_kz02.jpg" data-plant="Japanese Pachysandra">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Pachysandra_terminalis_%27Compacta%27_kz02.jpg/500px-Pachysandra_terminalis_%27Compacta%27_kz02.jpg" alt="Pachysandra terminalis 'Compacta' kz02.jpg" title="Pachysandra terminalis 'Compacta' kz02.jpg">
+        <span class="img-label">3. Pachysandra terminalis 'Compacta' kz02.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Japanese Pachysandra" value="https://upload.wikimedia.org/wikipedia/commons/6/69/Pachysandra_terminalis_-_Bourgeons.jpg" data-plant="Japanese Pachysandra">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Pachysandra_terminalis_-_Bourgeons.jpg/500px-Pachysandra_terminalis_-_Bourgeons.jpg" alt="Pachysandra terminalis - Bourgeons.jpg" title="Pachysandra terminalis - Bourgeons.jpg">
+        <span class="img-label">4. Pachysandra terminalis - Bourgeons.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Japanese Pachysandra" value="https://upload.wikimedia.org/wikipedia/commons/e/e0/Pachysandra_terminalis_Runianka_japo%C5%84ska_2019-10-26_01.jpg" data-plant="Japanese Pachysandra">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Pachysandra_terminalis_Runianka_japo%C5%84ska_2019-10-26_01.jpg/500px-Pachysandra_terminalis_Runianka_japo%C5%84ska_2019-10-26_01.jpg" alt="Pachysandra terminalis Runianka japońska 2019-10-26 01.jpg" title="Pachysandra terminalis Runianka japońska 2019-10-26 01.jpg">
+        <span class="img-label">5. Pachysandra terminalis Runianka japońska 2019-10-2</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Mt. Vernon Cherry Laurel</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Mt. Vernon Cherry Laurel" value="https://upload.wikimedia.org/wikipedia/commons/0/01/%28MHNT%29_Prunus_laurocerasus_inflorescence_-_Bouloc_France.jpg" data-plant="Mt. Vernon Cherry Laurel">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/%28MHNT%29_Prunus_laurocerasus_inflorescence_-_Bouloc_France.jpg/500px-%28MHNT%29_Prunus_laurocerasus_inflorescence_-_Bouloc_France.jpg" alt="(MHNT) Prunus laurocerasus inflorescence - Bouloc France.jpg" title="(MHNT) Prunus laurocerasus inflorescence - Bouloc France.jpg">
+        <span class="img-label">1. (MHNT) Prunus laurocerasus inflorescence - Bouloc </span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Mt. Vernon Cherry Laurel" value="https://upload.wikimedia.org/wikipedia/commons/5/57/Fr%C3%BChling_bl%C3%BChender_Kirschenbaum.jpg" data-plant="Mt. Vernon Cherry Laurel">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Fr%C3%BChling_bl%C3%BChender_Kirschenbaum.jpg/500px-Fr%C3%BChling_bl%C3%BChender_Kirschenbaum.jpg" alt="Frühling blühender Kirschenbaum.jpg" title="Frühling blühender Kirschenbaum.jpg">
+        <span class="img-label">2. Frühling blühender Kirschenbaum.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Mt. Vernon Cherry Laurel" value="https://upload.wikimedia.org/wikipedia/commons/e/e3/Nymphalis_io_Luc_Viatour.jpg" data-plant="Mt. Vernon Cherry Laurel">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Nymphalis_io_Luc_Viatour.jpg/500px-Nymphalis_io_Luc_Viatour.jpg" alt="Nymphalis io Luc Viatour.jpg" title="Nymphalis io Luc Viatour.jpg">
+        <span class="img-label">3. Nymphalis io Luc Viatour.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Mt. Vernon Cherry Laurel" value="https://upload.wikimedia.org/wikipedia/commons/4/47/Prunus_laurocerasus_-_Taflan%2C_Giresun_2017-07-05_01-11.jpg" data-plant="Mt. Vernon Cherry Laurel">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Prunus_laurocerasus_-_Taflan%2C_Giresun_2017-07-05_01-11.jpg/500px-Prunus_laurocerasus_-_Taflan%2C_Giresun_2017-07-05_01-11.jpg" alt="Prunus laurocerasus - Taflan, Giresun 2017-07-05 01-11.jpg" title="Prunus laurocerasus - Taflan, Giresun 2017-07-05 01-11.jpg">
+        <span class="img-label">4. Prunus laurocerasus - Taflan, Giresun 2017-07-05 0</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Mt. Vernon Cherry Laurel" value="https://upload.wikimedia.org/wikipedia/commons/6/6d/Prunus_laurocerasus_188985708.jpg" data-plant="Mt. Vernon Cherry Laurel">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Prunus_laurocerasus_188985708.jpg/500px-Prunus_laurocerasus_188985708.jpg" alt="Prunus laurocerasus 188985708.jpg" title="Prunus laurocerasus 188985708.jpg">
+        <span class="img-label">5. Prunus laurocerasus 188985708.jpg</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Irish Moss</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Irish Moss" value="https://upload.wikimedia.org/wikipedia/commons/0/0e/Sagina_subulata_Aurea_2015_01.jpg" data-plant="Irish Moss">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Sagina_subulata_Aurea_2015_01.jpg/500px-Sagina_subulata_Aurea_2015_01.jpg" alt="Sagina subulata Aurea 2015 01.jpg" title="Sagina subulata Aurea 2015 01.jpg">
+        <span class="img-label">1. Sagina subulata Aurea 2015 01.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Irish Moss" value="https://upload.wikimedia.org/wikipedia/commons/5/59/Sagina_subulata_Aurea_2015_02.jpg" data-plant="Irish Moss">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Sagina_subulata_Aurea_2015_02.jpg/500px-Sagina_subulata_Aurea_2015_02.jpg" alt="Sagina subulata Aurea 2015 02.jpg" title="Sagina subulata Aurea 2015 02.jpg">
+        <span class="img-label">2. Sagina subulata Aurea 2015 02.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Irish Moss" value="https://upload.wikimedia.org/wikipedia/commons/a/a5/Sagina_subulata_Aurea_2015_03.jpg" data-plant="Irish Moss">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Sagina_subulata_Aurea_2015_03.jpg/500px-Sagina_subulata_Aurea_2015_03.jpg" alt="Sagina subulata Aurea 2015 03.jpg" title="Sagina subulata Aurea 2015 03.jpg">
+        <span class="img-label">3. Sagina subulata Aurea 2015 03.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Irish Moss" value="https://upload.wikimedia.org/wikipedia/commons/8/8f/Sagina_subulata_Aurea_2015_04.jpg" data-plant="Irish Moss">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Sagina_subulata_Aurea_2015_04.jpg/500px-Sagina_subulata_Aurea_2015_04.jpg" alt="Sagina subulata Aurea 2015 04.jpg" title="Sagina subulata Aurea 2015 04.jpg">
+        <span class="img-label">4. Sagina subulata Aurea 2015 04.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Irish Moss" value="https://upload.wikimedia.org/wikipedia/commons/8/83/Sagina_subulata_a1.jpg" data-plant="Irish Moss">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Sagina_subulata_a1.jpg/500px-Sagina_subulata_a1.jpg" alt="Sagina subulata a1.jpg" title="Sagina subulata a1.jpg">
+        <span class="img-label">5. Sagina subulata a1.jpg</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Creeping Thyme</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Creeping Thyme" value="https://upload.wikimedia.org/wikipedia/commons/2/20/Thymus_praecox.JPG" data-plant="Creeping Thyme">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Thymus_praecox.JPG/500px-Thymus_praecox.JPG" alt="Thymus praecox.JPG" title="Thymus praecox.JPG">
+        <span class="img-label">1. Thymus praecox.JPG</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Creeping Thyme" value="https://upload.wikimedia.org/wikipedia/commons/d/de/Thymus_praecox_%2826996253554%29.jpg" data-plant="Creeping Thyme">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Thymus_praecox_%2826996253554%29.jpg/500px-Thymus_praecox_%2826996253554%29.jpg" alt="Thymus praecox (26996253554).jpg" title="Thymus praecox (26996253554).jpg">
+        <span class="img-label">2. Thymus praecox (26996253554).jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Creeping Thyme" value="https://upload.wikimedia.org/wikipedia/commons/4/4b/Thymus_praecox_Coccineus_2015_01.jpg" data-plant="Creeping Thyme">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Thymus_praecox_Coccineus_2015_01.jpg/500px-Thymus_praecox_Coccineus_2015_01.jpg" alt="Thymus praecox Coccineus 2015 01.jpg" title="Thymus praecox Coccineus 2015 01.jpg">
+        <span class="img-label">3. Thymus praecox Coccineus 2015 01.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Creeping Thyme" value="https://upload.wikimedia.org/wikipedia/commons/e/ee/Thymus_praecox_Coccineus_2015_02.jpg" data-plant="Creeping Thyme">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Thymus_praecox_Coccineus_2015_02.jpg/500px-Thymus_praecox_Coccineus_2015_02.jpg" alt="Thymus praecox Coccineus 2015 02.jpg" title="Thymus praecox Coccineus 2015 02.jpg">
+        <span class="img-label">4. Thymus praecox Coccineus 2015 02.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Creeping Thyme" value="https://upload.wikimedia.org/wikipedia/commons/a/a2/Thymus_praecox_Coccineus_2015_04.jpg" data-plant="Creeping Thyme">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Thymus_praecox_Coccineus_2015_04.jpg/500px-Thymus_praecox_Coccineus_2015_04.jpg" alt="Thymus praecox Coccineus 2015 04.jpg" title="Thymus praecox Coccineus 2015 04.jpg">
+        <span class="img-label">5. Thymus praecox Coccineus 2015 04.jpg</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Redwood Sorrel</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Redwood Sorrel" value="https://upload.wikimedia.org/wikipedia/commons/8/85/Oxalis_oregana_--_VanDusen_Botanical_Garden_--_Vancouver%2C_BC.jpg" data-plant="Redwood Sorrel">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Oxalis_oregana_--_VanDusen_Botanical_Garden_--_Vancouver%2C_BC.jpg/500px-Oxalis_oregana_--_VanDusen_Botanical_Garden_--_Vancouver%2C_BC.jpg" alt="Oxalis oregana -- VanDusen Botanical Garden -- Vancouver, BC.jpg" title="Oxalis oregana -- VanDusen Botanical Garden -- Vancouver, BC.jpg">
+        <span class="img-label">1. Oxalis oregana -- VanDusen Botanical Garden -- Van</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Redwood Sorrel" value="https://upload.wikimedia.org/wikipedia/commons/e/ef/Oxalis_oregana_-_Armstrong_Redwoods_State_Natural_Reserve_-_January_2023_-_Sarah_Stierch.jpg" data-plant="Redwood Sorrel">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Oxalis_oregana_-_Armstrong_Redwoods_State_Natural_Reserve_-_January_2023_-_Sarah_Stierch.jpg/500px-Oxalis_oregana_-_Armstrong_Redwoods_State_Natural_Reserve_-_January_2023_-_Sarah_Stierch.jpg" alt="Oxalis oregana - Armstrong Redwoods State Natural Reserve - January 2023 - Sarah Stierch.jpg" title="Oxalis oregana - Armstrong Redwoods State Natural Reserve - January 2023 - Sarah Stierch.jpg">
+        <span class="img-label">2. Oxalis oregana - Armstrong Redwoods State Natural </span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Redwood Sorrel" value="https://upload.wikimedia.org/wikipedia/commons/a/a1/Oxalis_oregana_002.jpg" data-plant="Redwood Sorrel">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Oxalis_oregana_002.jpg/500px-Oxalis_oregana_002.jpg" alt="Oxalis oregana 002.jpg" title="Oxalis oregana 002.jpg">
+        <span class="img-label">3. Oxalis oregana 002.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Redwood Sorrel" value="https://upload.wikimedia.org/wikipedia/commons/8/85/Oxalis_oregana_06112.JPG" data-plant="Redwood Sorrel">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Oxalis_oregana_06112.JPG/500px-Oxalis_oregana_06112.JPG" alt="Oxalis oregana 06112.JPG" title="Oxalis oregana 06112.JPG">
+        <span class="img-label">4. Oxalis oregana 06112.JPG</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Redwood Sorrel" value="https://upload.wikimedia.org/wikipedia/commons/2/22/Redwood_Sorrel_%28Oxalis_oregana%29%2C_closeup_of_flower.jpg" data-plant="Redwood Sorrel">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Redwood_Sorrel_%28Oxalis_oregana%29%2C_closeup_of_flower.jpg/500px-Redwood_Sorrel_%28Oxalis_oregana%29%2C_closeup_of_flower.jpg" alt="Redwood Sorrel (Oxalis oregana), closeup of flower.jpg" title="Redwood Sorrel (Oxalis oregana), closeup of flower.jpg">
+        <span class="img-label">5. Redwood Sorrel (Oxalis oregana), closeup of flower</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Bleeding Heart</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Bleeding Heart" value="https://upload.wikimedia.org/wikipedia/commons/f/fe/Dicentra_formosa_626595752.jpg" data-plant="Bleeding Heart">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Dicentra_formosa_626595752.jpg/500px-Dicentra_formosa_626595752.jpg" alt="Dicentra formosa 626595752.jpg" title="Dicentra formosa 626595752.jpg">
+        <span class="img-label">1. Dicentra formosa 626595752.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Bleeding Heart" value="https://upload.wikimedia.org/wikipedia/commons/7/76/Dicentra_formosa_626596045.jpg" data-plant="Bleeding Heart">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Dicentra_formosa_626596045.jpg/500px-Dicentra_formosa_626596045.jpg" alt="Dicentra formosa 626596045.jpg" title="Dicentra formosa 626596045.jpg">
+        <span class="img-label">2. Dicentra formosa 626596045.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Bleeding Heart" value="https://upload.wikimedia.org/wikipedia/commons/7/76/Dicentra_formosa_6897.JPG" data-plant="Bleeding Heart">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Dicentra_formosa_6897.JPG/500px-Dicentra_formosa_6897.JPG" alt="Dicentra formosa 6897.JPG" title="Dicentra formosa 6897.JPG">
+        <span class="img-label">3. Dicentra formosa 6897.JPG</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Bleeding Heart" value="https://upload.wikimedia.org/wikipedia/commons/7/7e/Dicentra_formosa_6899.JPG" data-plant="Bleeding Heart">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Dicentra_formosa_6899.JPG/500px-Dicentra_formosa_6899.JPG" alt="Dicentra formosa 6899.JPG" title="Dicentra formosa 6899.JPG">
+        <span class="img-label">4. Dicentra formosa 6899.JPG</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Bleeding Heart" value="https://upload.wikimedia.org/wikipedia/commons/6/68/Dicentra_formosa_flower.jpg" data-plant="Bleeding Heart">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Dicentra_formosa_flower.jpg/500px-Dicentra_formosa_flower.jpg" alt="Dicentra formosa flower.jpg" title="Dicentra formosa flower.jpg">
+        <span class="img-label">5. Dicentra formosa flower.jpg</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Purple Coneflower</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Purple Coneflower" value="https://upload.wikimedia.org/wikipedia/commons/2/29/American_lady_on_purple_coneflower_%2874770%29.jpg" data-plant="Purple Coneflower">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/American_lady_on_purple_coneflower_%2874770%29.jpg/500px-American_lady_on_purple_coneflower_%2874770%29.jpg" alt="American lady on purple coneflower (74770).jpg" title="American lady on purple coneflower (74770).jpg">
+        <span class="img-label">1. American lady on purple coneflower (74770).jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Purple Coneflower" value="https://upload.wikimedia.org/wikipedia/commons/8/88/Echinacea_purpurea%2C_Jard%C3%ADn_Bot%C3%A1nico%2C_M%C3%BAnich%2C_Alemania%2C_2013-09-08%2C_DD_01.jpg" data-plant="Purple Coneflower">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Echinacea_purpurea%2C_Jard%C3%ADn_Bot%C3%A1nico%2C_M%C3%BAnich%2C_Alemania%2C_2013-09-08%2C_DD_01.jpg/500px-Echinacea_purpurea%2C_Jard%C3%ADn_Bot%C3%A1nico%2C_M%C3%BAnich%2C_Alemania%2C_2013-09-08%2C_DD_01.jpg" alt="Echinacea purpurea, Jardín Botánico, Múnich, Alemania, 2013-09-08, DD 01.jpg" title="Echinacea purpurea, Jardín Botánico, Múnich, Alemania, 2013-09-08, DD 01.jpg">
+        <span class="img-label">2. Echinacea purpurea, Jardín Botánico, Múnich, Alema</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Purple Coneflower" value="https://upload.wikimedia.org/wikipedia/commons/6/6a/Echinacea_purpurea_in_Jardin_botanique_de_la_Charme_01.jpg" data-plant="Purple Coneflower">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Echinacea_purpurea_in_Jardin_botanique_de_la_Charme_01.jpg/500px-Echinacea_purpurea_in_Jardin_botanique_de_la_Charme_01.jpg" alt="Echinacea purpurea in Jardin botanique de la Charme 01.jpg" title="Echinacea purpurea in Jardin botanique de la Charme 01.jpg">
+        <span class="img-label">3. Echinacea purpurea in Jardin botanique de la Charm</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Purple Coneflower" value="https://upload.wikimedia.org/wikipedia/commons/1/1f/Echinacea_purpurea_%E2%80%98Coral_Reef%27_IMG_0448.jpg" data-plant="Purple Coneflower">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Echinacea_purpurea_%E2%80%98Coral_Reef%27_IMG_0448.jpg/500px-Echinacea_purpurea_%E2%80%98Coral_Reef%27_IMG_0448.jpg" alt="Echinacea purpurea ‘Coral Reef' IMG 0448.jpg" title="Echinacea purpurea ‘Coral Reef' IMG 0448.jpg">
+        <span class="img-label">4. Echinacea purpurea ‘Coral Reef' IMG 0448.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Purple Coneflower" value="https://upload.wikimedia.org/wikipedia/commons/b/b5/Monarch_Butterfly_Danaus_plexippus_on_Echinacea_purpurea_2800px.jpg" data-plant="Purple Coneflower">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Monarch_Butterfly_Danaus_plexippus_on_Echinacea_purpurea_2800px.jpg/500px-Monarch_Butterfly_Danaus_plexippus_on_Echinacea_purpurea_2800px.jpg" alt="Monarch Butterfly Danaus plexippus on Echinacea purpurea 2800px.jpg" title="Monarch Butterfly Danaus plexippus on Echinacea purpurea 2800px.jpg">
+        <span class="img-label">5. Monarch Butterfly Danaus plexippus on Echinacea pu</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Seaside Daisy</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Seaside Daisy" value="https://upload.wikimedia.org/wikipedia/commons/4/40/Erigeron_Glaucus.jpg" data-plant="Seaside Daisy">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Erigeron_Glaucus.jpg/500px-Erigeron_Glaucus.jpg" alt="Erigeron Glaucus.jpg" title="Erigeron Glaucus.jpg">
+        <span class="img-label">1. Erigeron Glaucus.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Seaside Daisy" value="https://upload.wikimedia.org/wikipedia/commons/2/20/Erigeron_glaucus%2C_Elland_Road%2C_Brighouse_-_geograph.org.uk_-_7228756.jpg" data-plant="Seaside Daisy">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Erigeron_glaucus%2C_Elland_Road%2C_Brighouse_-_geograph.org.uk_-_7228756.jpg/500px-Erigeron_glaucus%2C_Elland_Road%2C_Brighouse_-_geograph.org.uk_-_7228756.jpg" alt="Erigeron glaucus, Elland Road, Brighouse - geograph.org.uk - 7228756.jpg" title="Erigeron glaucus, Elland Road, Brighouse - geograph.org.uk - 7228756.jpg">
+        <span class="img-label">2. Erigeron glaucus, Elland Road, Brighouse - geograp</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Seaside Daisy" value="https://upload.wikimedia.org/wikipedia/commons/c/c7/Erigeron_glaucus.jpg" data-plant="Seaside Daisy">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Erigeron_glaucus.jpg/500px-Erigeron_glaucus.jpg" alt="Erigeron glaucus.jpg" title="Erigeron glaucus.jpg">
+        <span class="img-label">3. Erigeron glaucus.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Seaside Daisy" value="https://upload.wikimedia.org/wikipedia/commons/d/d9/Erigeron_glaucus_kz01.jpg" data-plant="Seaside Daisy">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Erigeron_glaucus_kz01.jpg/500px-Erigeron_glaucus_kz01.jpg" alt="Erigeron glaucus kz01.jpg" title="Erigeron glaucus kz01.jpg">
+        <span class="img-label">4. Erigeron glaucus kz01.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Seaside Daisy" value="https://upload.wikimedia.org/wikipedia/commons/3/32/Erigeron_glaucus_kz02.jpg" data-plant="Seaside Daisy">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Erigeron_glaucus_kz02.jpg/500px-Erigeron_glaucus_kz02.jpg" alt="Erigeron glaucus kz02.jpg" title="Erigeron glaucus kz02.jpg">
+        <span class="img-label">5. Erigeron glaucus kz02.jpg</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Joe Pye Weed</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Joe Pye Weed" value="https://upload.wikimedia.org/wikipedia/commons/5/5f/Eupatorium_maculatum_A.jpg" data-plant="Joe Pye Weed">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Eupatorium_maculatum_A.jpg/500px-Eupatorium_maculatum_A.jpg" alt="Eupatorium maculatum A.jpg" title="Eupatorium maculatum A.jpg">
+        <span class="img-label">1. Eupatorium maculatum A.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Joe Pye Weed" value="https://upload.wikimedia.org/wikipedia/commons/9/9b/Eupatorium_maculatum_Atropurpureum_1zz.jpg" data-plant="Joe Pye Weed">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Eupatorium_maculatum_Atropurpureum_1zz.jpg/500px-Eupatorium_maculatum_Atropurpureum_1zz.jpg" alt="Eupatorium maculatum Atropurpureum 1zz.jpg" title="Eupatorium maculatum Atropurpureum 1zz.jpg">
+        <span class="img-label">2. Eupatorium maculatum Atropurpureum 1zz.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Joe Pye Weed" value="https://upload.wikimedia.org/wikipedia/commons/f/f2/Eupatorium_maculatum_B.jpg" data-plant="Joe Pye Weed">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Eupatorium_maculatum_B.jpg/500px-Eupatorium_maculatum_B.jpg" alt="Eupatorium maculatum B.jpg" title="Eupatorium maculatum B.jpg">
+        <span class="img-label">3. Eupatorium maculatum B.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Joe Pye Weed" value="https://upload.wikimedia.org/wikipedia/commons/9/9e/Eupatorium_maculatum_R01.jpg" data-plant="Joe Pye Weed">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Eupatorium_maculatum_R01.jpg/500px-Eupatorium_maculatum_R01.jpg" alt="Eupatorium maculatum R01.jpg" title="Eupatorium maculatum R01.jpg">
+        <span class="img-label">4. Eupatorium maculatum R01.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Joe Pye Weed" value="https://upload.wikimedia.org/wikipedia/commons/8/8c/Eupatorium_maculatum_kz2.jpg" data-plant="Joe Pye Weed">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Eupatorium_maculatum_kz2.jpg/500px-Eupatorium_maculatum_kz2.jpg" alt="Eupatorium maculatum kz2.jpg" title="Eupatorium maculatum kz2.jpg">
+        <span class="img-label">5. Eupatorium maculatum kz2.jpg</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Cranesbill Geranium</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Cranesbill Geranium" value="https://upload.wikimedia.org/wikipedia/commons/f/f6/%28MHNT%29_Geranium_macrorrhizum_inflorescence_and_foliage_-_Les_Martels%2C_Giroussens_Tarn.jpg" data-plant="Cranesbill Geranium">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/%28MHNT%29_Geranium_macrorrhizum_inflorescence_and_foliage_-_Les_Martels%2C_Giroussens_Tarn.jpg/500px-%28MHNT%29_Geranium_macrorrhizum_inflorescence_and_foliage_-_Les_Martels%2C_Giroussens_Tarn.jpg" alt="(MHNT) Geranium macrorrhizum inflorescence and foliage - Les Martels, Giroussens Tarn.jpg" title="(MHNT) Geranium macrorrhizum inflorescence and foliage - Les Martels, Giroussens Tarn.jpg">
+        <span class="img-label">1. (MHNT) Geranium macrorrhizum inflorescence and fol</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Cranesbill Geranium" value="https://upload.wikimedia.org/wikipedia/commons/b/b1/2018-05-13_%28129%29_Geranium_macrorrhizum_%28Rock_Crane%27s-bill%29_at_Bichlh%C3%A4usl_in_Frankenfels%2C_Austria.jpg" data-plant="Cranesbill Geranium">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/2018-05-13_%28129%29_Geranium_macrorrhizum_%28Rock_Crane%27s-bill%29_at_Bichlh%C3%A4usl_in_Frankenfels%2C_Austria.jpg/500px-2018-05-13_%28129%29_Geranium_macrorrhizum_%28Rock_Crane%27s-bill%29_at_Bichlh%C3%A4usl_in_Frankenfels%2C_Austria.jpg" alt="2018-05-13 (129) Geranium macrorrhizum (Rock Crane's-bill) at Bichlhäusl in Frankenfels, Austria.jpg" title="2018-05-13 (129) Geranium macrorrhizum (Rock Crane's-bill) at Bichlhäusl in Frankenfels, Austria.jpg">
+        <span class="img-label">2. 2018-05-13 (129) Geranium macrorrhizum (Rock Crane</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Cranesbill Geranium" value="https://upload.wikimedia.org/wikipedia/commons/2/2b/2018-05-13_%28167%29_Geranium_macrorrhizum_%28Rock_Crane%27s-bill%29_at_Bichlh%C3%A4usl_in_Frankenfels%2C_Austria.jpg" data-plant="Cranesbill Geranium">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/2018-05-13_%28167%29_Geranium_macrorrhizum_%28Rock_Crane%27s-bill%29_at_Bichlh%C3%A4usl_in_Frankenfels%2C_Austria.jpg/500px-2018-05-13_%28167%29_Geranium_macrorrhizum_%28Rock_Crane%27s-bill%29_at_Bichlh%C3%A4usl_in_Frankenfels%2C_Austria.jpg" alt="2018-05-13 (167) Geranium macrorrhizum (Rock Crane's-bill) at Bichlhäusl in Frankenfels, Austria.jpg" title="2018-05-13 (167) Geranium macrorrhizum (Rock Crane's-bill) at Bichlhäusl in Frankenfels, Austria.jpg">
+        <span class="img-label">3. 2018-05-13 (167) Geranium macrorrhizum (Rock Crane</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Cranesbill Geranium" value="https://upload.wikimedia.org/wikipedia/commons/d/d5/2019-06-07_%28116%29_Carterocephalus_palaemon_%28chequered_skipper%29_on_Geranium_macrorrhizum_%28rock_Crane%27s-bill%29_at_Bichlh%C3%A4usl%2C_Tiefgrabenrotte%2C_Frankenfels%2C_Austria.jpg" data-plant="Cranesbill Geranium">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/2019-06-07_%28116%29_Carterocephalus_palaemon_%28chequered_skipper%29_on_Geranium_macrorrhizum_%28rock_Crane%27s-bill%29_at_Bichlh%C3%A4usl%2C_Tiefgrabenrotte%2C_Frankenfels%2C_Austria.jpg/500px-thumbnail.jpg" alt="2019-06-07 (116) Carterocephalus palaemon (chequered skipper) on Geranium macrorrhizum (rock Crane's-bill) at Bichlhäusl, Tiefgrabenrotte, Frankenfels, Austria.jpg" title="2019-06-07 (116) Carterocephalus palaemon (chequered skipper) on Geranium macrorrhizum (rock Crane's-bill) at Bichlhäusl, Tiefgrabenrotte, Frankenfels, Austria.jpg">
+        <span class="img-label">4. 2019-06-07 (116) Carterocephalus palaemon (chequer</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Cranesbill Geranium" value="https://upload.wikimedia.org/wikipedia/commons/c/c3/Geranium_macrorrhizum_01.JPG" data-plant="Cranesbill Geranium">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Geranium_macrorrhizum_01.JPG/500px-Geranium_macrorrhizum_01.JPG" alt="Geranium macrorrhizum 01.JPG" title="Geranium macrorrhizum 01.JPG">
+        <span class="img-label">5. Geranium macrorrhizum 01.JPG</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Culver's Root</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Culver's Root" value="https://upload.wikimedia.org/wikipedia/commons/a/ad/Veronicastrum_virginicum_-_Culver%27s_Root_%28Leaves%29.jpg" data-plant="Culver's Root">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Veronicastrum_virginicum_-_Culver%27s_Root_%28Leaves%29.jpg/500px-Veronicastrum_virginicum_-_Culver%27s_Root_%28Leaves%29.jpg" alt="Veronicastrum virginicum - Culver's Root (Leaves).jpg" title="Veronicastrum virginicum - Culver's Root (Leaves).jpg">
+        <span class="img-label">1. Veronicastrum virginicum - Culver's Root (Leaves).</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Culver's Root" value="https://upload.wikimedia.org/wikipedia/commons/3/31/Veronicastrum_virginicum_-_Culver%27s_Root_02.jpg" data-plant="Culver's Root">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Veronicastrum_virginicum_-_Culver%27s_Root_02.jpg/500px-Veronicastrum_virginicum_-_Culver%27s_Root_02.jpg" alt="Veronicastrum virginicum - Culver's Root 02.jpg" title="Veronicastrum virginicum - Culver's Root 02.jpg">
+        <span class="img-label">2. Veronicastrum virginicum - Culver's Root 02.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Culver's Root" value="https://upload.wikimedia.org/wikipedia/commons/e/e1/Veronicastrum_virginicum_kz02.jpg" data-plant="Culver's Root">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Veronicastrum_virginicum_kz02.jpg/500px-Veronicastrum_virginicum_kz02.jpg" alt="Veronicastrum virginicum kz02.jpg" title="Veronicastrum virginicum kz02.jpg">
+        <span class="img-label">3. Veronicastrum virginicum kz02.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Culver's Root" value="https://upload.wikimedia.org/wikipedia/commons/0/01/Veronicastrum_virginicum_kz03.jpg" data-plant="Culver's Root">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Veronicastrum_virginicum_kz03.jpg/500px-Veronicastrum_virginicum_kz03.jpg" alt="Veronicastrum virginicum kz03.jpg" title="Veronicastrum virginicum kz03.jpg">
+        <span class="img-label">4. Veronicastrum virginicum kz03.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Culver's Root" value="https://upload.wikimedia.org/wikipedia/commons/0/00/Veronicastrum_virginicum_kz04.jpg" data-plant="Culver's Root">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Veronicastrum_virginicum_kz04.jpg/500px-Veronicastrum_virginicum_kz04.jpg" alt="Veronicastrum virginicum kz04.jpg" title="Veronicastrum virginicum kz04.jpg">
+        <span class="img-label">5. Veronicastrum virginicum kz04.jpg</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Bowles Mauve Wallflower</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Bowles Mauve Wallflower" value="https://upload.wikimedia.org/wikipedia/commons/e/ea/%28MHNT%29_Erysimum_linifolium_Bowles%27_Mauve_-_Les_Martels%2C_Giroussens_Tarn.jpg" data-plant="Bowles Mauve Wallflower">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/%28MHNT%29_Erysimum_linifolium_Bowles%27_Mauve_-_Les_Martels%2C_Giroussens_Tarn.jpg/500px-%28MHNT%29_Erysimum_linifolium_Bowles%27_Mauve_-_Les_Martels%2C_Giroussens_Tarn.jpg" alt="(MHNT) Erysimum linifolium Bowles' Mauve - Les Martels, Giroussens Tarn.jpg" title="(MHNT) Erysimum linifolium Bowles' Mauve - Les Martels, Giroussens Tarn.jpg">
+        <span class="img-label">1. (MHNT) Erysimum linifolium Bowles' Mauve - Les Mar</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Bowles Mauve Wallflower" value="https://upload.wikimedia.org/wikipedia/commons/6/65/Erysimum_%22bowles_mauve%22_%28perennial_wallflower%29_%2849844066533%29.jpg" data-plant="Bowles Mauve Wallflower">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Erysimum_%22bowles_mauve%22_%28perennial_wallflower%29_%2849844066533%29.jpg/500px-Erysimum_%22bowles_mauve%22_%28perennial_wallflower%29_%2849844066533%29.jpg" alt="Erysimum "bowles mauve" (perennial wallflower) (49844066533).jpg" title="Erysimum "bowles mauve" (perennial wallflower) (49844066533).jpg">
+        <span class="img-label">2. Erysimum "bowles mauve" (perennial wallflower) (49</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Bowles Mauve Wallflower" value="https://upload.wikimedia.org/wikipedia/commons/0/04/Erysimum_%27Bowles_Mauve%27._Kort_levende_rijk_bloeiende_plant._Locatie%2C_Tuinreservaat_Jonkervallei.jpg" data-plant="Bowles Mauve Wallflower">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Erysimum_%27Bowles_Mauve%27._Kort_levende_rijk_bloeiende_plant._Locatie%2C_Tuinreservaat_Jonkervallei.jpg/500px-Erysimum_%27Bowles_Mauve%27._Kort_levende_rijk_bloeiende_plant._Locatie%2C_Tuinreservaat_Jonkervallei.jpg" alt="Erysimum 'Bowles Mauve'. Kort levende rijk bloeiende plant. Locatie, Tuinreservaat Jonkervallei.jpg" title="Erysimum 'Bowles Mauve'. Kort levende rijk bloeiende plant. Locatie, Tuinreservaat Jonkervallei.jpg">
+        <span class="img-label">3. Erysimum 'Bowles Mauve'. Kort levende rijk bloeien</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Bowles Mauve Wallflower" value="https://upload.wikimedia.org/wikipedia/commons/5/5f/Erysimum_%27Bowles_Mauve%27_01.JPG" data-plant="Bowles Mauve Wallflower">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Erysimum_%27Bowles_Mauve%27_01.JPG/500px-Erysimum_%27Bowles_Mauve%27_01.JPG" alt="Erysimum 'Bowles Mauve' 01.JPG" title="Erysimum 'Bowles Mauve' 01.JPG">
+        <span class="img-label">4. Erysimum 'Bowles Mauve' 01.JPG</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Bowles Mauve Wallflower" value="https://upload.wikimedia.org/wikipedia/commons/a/ac/Erysimum_%27Bowles_Mauve%27_02.JPG" data-plant="Bowles Mauve Wallflower">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Erysimum_%27Bowles_Mauve%27_02.JPG/500px-Erysimum_%27Bowles_Mauve%27_02.JPG" alt="Erysimum 'Bowles Mauve' 02.JPG" title="Erysimum 'Bowles Mauve' 02.JPG">
+        <span class="img-label">5. Erysimum 'Bowles Mauve' 02.JPG</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Euphorbia</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Euphorbia" value="https://upload.wikimedia.org/wikipedia/commons/9/93/Euphorbia_characias%2C_S%C3%A8te_01.jpg" data-plant="Euphorbia">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Euphorbia_characias%2C_S%C3%A8te_01.jpg/500px-Euphorbia_characias%2C_S%C3%A8te_01.jpg" alt="Euphorbia characias, Sète 01.jpg" title="Euphorbia characias, Sète 01.jpg">
+        <span class="img-label">1. Euphorbia characias, Sète 01.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Euphorbia" value="https://upload.wikimedia.org/wikipedia/commons/2/2c/Euphorbia_characias%2C_S%C3%A8te_05.jpg" data-plant="Euphorbia">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Euphorbia_characias%2C_S%C3%A8te_05.jpg/500px-Euphorbia_characias%2C_S%C3%A8te_05.jpg" alt="Euphorbia characias, Sète 05.jpg" title="Euphorbia characias, Sète 05.jpg">
+        <span class="img-label">2. Euphorbia characias, Sète 05.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Euphorbia" value="https://upload.wikimedia.org/wikipedia/commons/e/ef/Euphorbia_characias_%28flowers%29.jpg" data-plant="Euphorbia">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Euphorbia_characias_%28flowers%29.jpg/500px-Euphorbia_characias_%28flowers%29.jpg" alt="Euphorbia characias (flowers).jpg" title="Euphorbia characias (flowers).jpg">
+        <span class="img-label">3. Euphorbia characias (flowers).jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Euphorbia" value="https://upload.wikimedia.org/wikipedia/commons/d/da/Euphorbia_characias_%28habitus%29.jpg" data-plant="Euphorbia">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Euphorbia_characias_%28habitus%29.jpg/500px-Euphorbia_characias_%28habitus%29.jpg" alt="Euphorbia characias (habitus).jpg" title="Euphorbia characias (habitus).jpg">
+        <span class="img-label">4. Euphorbia characias (habitus).jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Euphorbia" value="https://upload.wikimedia.org/wikipedia/commons/b/b1/Euphorbia_characias_JdP.jpg" data-plant="Euphorbia">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Euphorbia_characias_JdP.jpg/500px-Euphorbia_characias_JdP.jpg" alt="Euphorbia characias JdP.jpg" title="Euphorbia characias JdP.jpg">
+        <span class="img-label">5. Euphorbia characias JdP.jpg</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Lenten Rose</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Lenten Rose" value="https://upload.wikimedia.org/wikipedia/commons/2/2b/Helleborus_orientalis%2C_Zaaddozen_zwellen%2C_Locatie%2C_Tuinreservaat_Jonkervallei_01.jpg" data-plant="Lenten Rose">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Helleborus_orientalis%2C_Zaaddozen_zwellen%2C_Locatie%2C_Tuinreservaat_Jonkervallei_01.jpg/500px-Helleborus_orientalis%2C_Zaaddozen_zwellen%2C_Locatie%2C_Tuinreservaat_Jonkervallei_01.jpg" alt="Helleborus orientalis, Zaaddozen zwellen, Locatie, Tuinreservaat Jonkervallei 01.jpg" title="Helleborus orientalis, Zaaddozen zwellen, Locatie, Tuinreservaat Jonkervallei 01.jpg">
+        <span class="img-label">1. Helleborus orientalis, Zaaddozen zwellen, Locatie,</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Lenten Rose" value="https://upload.wikimedia.org/wikipedia/commons/b/b0/Helleborus_orientalis._Bijna_witte_zaailing_02.JPG" data-plant="Lenten Rose">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Helleborus_orientalis._Bijna_witte_zaailing_02.JPG/500px-Helleborus_orientalis._Bijna_witte_zaailing_02.JPG" alt="Helleborus orientalis. Bijna witte zaailing 02.JPG" title="Helleborus orientalis. Bijna witte zaailing 02.JPG">
+        <span class="img-label">2. Helleborus orientalis. Bijna witte zaailing 02.JPG</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Lenten Rose" value="https://upload.wikimedia.org/wikipedia/commons/9/9a/Helleborus_orientalis._Lenteroos_03.JPG" data-plant="Lenten Rose">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Helleborus_orientalis._Lenteroos_03.JPG/500px-Helleborus_orientalis._Lenteroos_03.JPG" alt="Helleborus orientalis. Lenteroos 03.JPG" title="Helleborus orientalis. Lenteroos 03.JPG">
+        <span class="img-label">3. Helleborus orientalis. Lenteroos 03.JPG</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Lenten Rose" value="https://upload.wikimedia.org/wikipedia/commons/b/b6/Helleborus_orientalis._Lenteroos_04.JPG" data-plant="Lenten Rose">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Helleborus_orientalis._Lenteroos_04.JPG/500px-Helleborus_orientalis._Lenteroos_04.JPG" alt="Helleborus orientalis. Lenteroos 04.JPG" title="Helleborus orientalis. Lenteroos 04.JPG">
+        <span class="img-label">4. Helleborus orientalis. Lenteroos 04.JPG</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Lenten Rose" value="https://upload.wikimedia.org/wikipedia/commons/e/ee/Helleborus_orientalis_02.JPG" data-plant="Lenten Rose">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Helleborus_orientalis_02.JPG/500px-Helleborus_orientalis_02.JPG" alt="Helleborus orientalis 02.JPG" title="Helleborus orientalis 02.JPG">
+        <span class="img-label">5. Helleborus orientalis 02.JPG</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Common Chives</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Common Chives" value="https://upload.wikimedia.org/wikipedia/commons/5/53/Allium_schoenoprasum_%28Bieslook%29._actm.jpg" data-plant="Common Chives">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Allium_schoenoprasum_%28Bieslook%29._actm.jpg/500px-Allium_schoenoprasum_%28Bieslook%29._actm.jpg" alt="Allium schoenoprasum (Bieslook). actm.jpg" title="Allium schoenoprasum (Bieslook). actm.jpg">
+        <span class="img-label">1. Allium schoenoprasum (Bieslook). actm.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Common Chives" value="https://upload.wikimedia.org/wikipedia/commons/8/8f/Allium_schoenoprasum_%28Bieslook%29_d.j.b.jpg" data-plant="Common Chives">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Allium_schoenoprasum_%28Bieslook%29_d.j.b.jpg/500px-Allium_schoenoprasum_%28Bieslook%29_d.j.b.jpg" alt="Allium schoenoprasum (Bieslook) d.j.b.jpg" title="Allium schoenoprasum (Bieslook) d.j.b.jpg">
+        <span class="img-label">2. Allium schoenoprasum (Bieslook) d.j.b.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Common Chives" value="https://upload.wikimedia.org/wikipedia/commons/4/4e/Allium_schoenoprasum_001.JPG" data-plant="Common Chives">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Allium_schoenoprasum_001.JPG/500px-Allium_schoenoprasum_001.JPG" alt="Allium schoenoprasum 001.JPG" title="Allium schoenoprasum 001.JPG">
+        <span class="img-label">3. Allium schoenoprasum 001.JPG</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Common Chives" value="https://upload.wikimedia.org/wikipedia/commons/7/74/Allium_schoenoprasum_J1.JPG" data-plant="Common Chives">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Allium_schoenoprasum_J1.JPG/500px-Allium_schoenoprasum_J1.JPG" alt="Allium schoenoprasum J1.JPG" title="Allium schoenoprasum J1.JPG">
+        <span class="img-label">4. Allium schoenoprasum J1.JPG</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Common Chives" value="https://upload.wikimedia.org/wikipedia/commons/9/91/Allium_schoenoprasum_kz01.jpg" data-plant="Common Chives">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Allium_schoenoprasum_kz01.jpg/500px-Allium_schoenoprasum_kz01.jpg" alt="Allium schoenoprasum kz01.jpg" title="Allium schoenoprasum kz01.jpg">
+        <span class="img-label">5. Allium schoenoprasum kz01.jpg</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Italian Oregano</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Italian Oregano" value="https://upload.wikimedia.org/wikipedia/commons/a/a3/2017-07-23_%2844%29_Origanum_vulgare_%28oregano%29_and_Buphthalmum_salicifolium_%28ox-eye%29_at_D%C3%BCrrenstein_%28Ybbstaler_Alpen%29.jpg" data-plant="Italian Oregano">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/2017-07-23_%2844%29_Origanum_vulgare_%28oregano%29_and_Buphthalmum_salicifolium_%28ox-eye%29_at_D%C3%BCrrenstein_%28Ybbstaler_Alpen%29.jpg/500px-2017-07-23_%2844%29_Origanum_vulgare_%28oregano%29_and_Buphthalmum_salicifolium_%28ox-eye%29_at_D%C3%BCrrenstein_%28Ybbstaler_Alpen%29.jpg" alt="2017-07-23 (44) Origanum vulgare (oregano) and Buphthalmum salicifolium (ox-eye) at Dürrenstein (Ybbstaler Alpen).jpg" title="2017-07-23 (44) Origanum vulgare (oregano) and Buphthalmum salicifolium (ox-eye) at Dürrenstein (Ybbstaler Alpen).jpg">
+        <span class="img-label">1. 2017-07-23 (44) Origanum vulgare (oregano) and Bup</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Italian Oregano" value="https://upload.wikimedia.org/wikipedia/commons/1/14/Origanum_vulgare_-_harilik_pune.jpg" data-plant="Italian Oregano">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Origanum_vulgare_-_harilik_pune.jpg/500px-Origanum_vulgare_-_harilik_pune.jpg" alt="Origanum vulgare - harilik pune.jpg" title="Origanum vulgare - harilik pune.jpg">
+        <span class="img-label">2. Origanum vulgare - harilik pune.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Italian Oregano" value="https://upload.wikimedia.org/wikipedia/commons/f/f1/Origanum_vulgare_147723595.jpg" data-plant="Italian Oregano">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Origanum_vulgare_147723595.jpg/500px-Origanum_vulgare_147723595.jpg" alt="Origanum vulgare 147723595.jpg" title="Origanum vulgare 147723595.jpg">
+        <span class="img-label">3. Origanum vulgare 147723595.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Italian Oregano" value="https://upload.wikimedia.org/wikipedia/commons/5/53/Origanum_vulgare_149176132.jpg" data-plant="Italian Oregano">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Origanum_vulgare_149176132.jpg/500px-Origanum_vulgare_149176132.jpg" alt="Origanum vulgare 149176132.jpg" title="Origanum vulgare 149176132.jpg">
+        <span class="img-label">4. Origanum vulgare 149176132.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Italian Oregano" value="https://upload.wikimedia.org/wikipedia/commons/1/17/Origanum_vulgare_inflorescence_-_Keila.jpg" data-plant="Italian Oregano">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Origanum_vulgare_inflorescence_-_Keila.jpg/500px-Origanum_vulgare_inflorescence_-_Keila.jpg" alt="Origanum vulgare inflorescence - Keila.jpg" title="Origanum vulgare inflorescence - Keila.jpg">
+        <span class="img-label">5. Origanum vulgare inflorescence - Keila.jpg</span>
+      </label></div>
+    </div>
+    <div class="plant-row">
+      <h3>Raspberry</h3>
+      <div class="imgs">
+      <label class="img-option">
+        <input type="radio" name="Raspberry" value="https://upload.wikimedia.org/wikipedia/commons/8/83/2020_year._Herbarium._Rubus_idaeus._img-037.jpg" data-plant="Raspberry">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/2020_year._Herbarium._Rubus_idaeus._img-037.jpg/500px-2020_year._Herbarium._Rubus_idaeus._img-037.jpg" alt="2020 year. Herbarium. Rubus idaeus. img-037.jpg" title="2020 year. Herbarium. Rubus idaeus. img-037.jpg">
+        <span class="img-label">1. 2020 year. Herbarium. Rubus idaeus. img-037.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Raspberry" value="https://upload.wikimedia.org/wikipedia/commons/5/55/2020_year._Herbarium._Rubus_idaeus._img-042.jpg" data-plant="Raspberry">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/2020_year._Herbarium._Rubus_idaeus._img-042.jpg/500px-2020_year._Herbarium._Rubus_idaeus._img-042.jpg" alt="2020 year. Herbarium. Rubus idaeus. img-042.jpg" title="2020 year. Herbarium. Rubus idaeus. img-042.jpg">
+        <span class="img-label">2. 2020 year. Herbarium. Rubus idaeus. img-042.jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Raspberry" value="https://upload.wikimedia.org/wikipedia/commons/a/a2/Raspberries_%28Rubus_Idaeus%29.jpg" data-plant="Raspberry">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Raspberries_%28Rubus_Idaeus%29.jpg/500px-Raspberries_%28Rubus_Idaeus%29.jpg" alt="Raspberries (Rubus Idaeus).jpg" title="Raspberries (Rubus Idaeus).jpg">
+        <span class="img-label">3. Raspberries (Rubus Idaeus).jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Raspberry" value="https://upload.wikimedia.org/wikipedia/commons/2/2b/Raspberries_%28Rubus_idaeus%29.jpg" data-plant="Raspberry">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Raspberries_%28Rubus_idaeus%29.jpg/500px-Raspberries_%28Rubus_idaeus%29.jpg" alt="Raspberries (Rubus idaeus).jpg" title="Raspberries (Rubus idaeus).jpg">
+        <span class="img-label">4. Raspberries (Rubus idaeus).jpg</span>
+      </label>
+      <label class="img-option">
+        <input type="radio" name="Raspberry" value="https://upload.wikimedia.org/wikipedia/commons/a/a7/Raspberry_-_halved_%28Rubus_idaeus%29.jpg" data-plant="Raspberry">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Raspberry_-_halved_%28Rubus_idaeus%29.jpg/500px-Raspberry_-_halved_%28Rubus_idaeus%29.jpg" alt="Raspberry - halved (Rubus idaeus).jpg" title="Raspberry - halved (Rubus idaeus).jpg">
+        <span class="img-label">5. Raspberry - halved (Rubus idaeus).jpg</span>
+      </label></div>
+    </div>
+<button onclick="generate()">Generate images.json</button>
+<div id="output"></div>
+<script>
+function generate() {
+  const result = {};
+  document.querySelectorAll('input[type=radio]:checked').forEach(r => {
+    result[r.dataset.plant] = r.value;
+  });
+  document.getElementById('output').textContent = JSON.stringify(result, null, 2);
+}
+</script>
+</body>
+</html>

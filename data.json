@@ -1,0 +1,421 @@
+{
+  "Weather Alerts": {
+    "scientific": "",
+    "category": "General",
+    "tasks": {
+      "February": "HARD FREEZE WATCH",
+      "March": "HAIL WATCH,",
+      "April": "LAST FROST w3",
+      "September": "Expect dryness",
+      "November": "FIRST FROST w1"
+    }
+  },
+  "Hardscape": {
+    "scientific": "",
+    "category": "General",
+    "tasks": {
+      "April": "Pressure washing",
+      "May": "Irrigation + fountain turn-on, clean, repair, Pressure washing",
+      "August": "Deck re-finishing",
+      "October": "Irrigation + fountain winterization"
+    }
+  },
+  "Soil": {
+    "scientific": "",
+    "category": "General",
+    "tasks": {
+      "January": "Mulching",
+      "April": "Warm for nematodes",
+      "November": "Leaf raking/processing",
+      "December": "Mulching"
+    }
+  },
+  "Lawns": {
+    "scientific": "",
+    "category": "General",
+    "tasks": {
+      "February": "Schedule lawn renovations (for march)",
+      "March": "Lawn renovations",
+      "May": "aerate and overseed. Apply beneficial nematodes when soil temperatures go above 60. Apply to wet lawn and water in.",
+      "September": "Aerate and overseed."
+    }
+  },
+  "Bulbs": {
+    "scientific": "",
+    "category": "General",
+    "tasks": {
+      "July": "Order bulbs.",
+      "November": "Last chance to plant bulbs."
+    }
+  },
+  "Irrigation": {
+    "scientific": "",
+    "category": "General",
+    "tasks": {
+      "March": "Irrigation Turn ON",
+      "October": "Irrigation turn off"
+    }
+  },
+  "Midwinter Fire Dogwood": {
+    "scientific": "Cornus sanguinea 'Midwinter Fire'",
+    "category": "Shrubs",
+    "tasks": {
+      "April": "Cut down all stems when spring growth is under way. PRUNE to reduce branch crossing and crowding.",
+      "June": "Check for crowding and crossing and remove."
+    }
+  },
+  "Panicle Hydrangea": {
+    "scientific": "Hydrangea paniculata",
+    "category": "Shrubs",
+    "tasks": {
+      "March": "Once buds have swelled, PRUNE all branches to the bud pair closest to the center. Cut all weak, damaged, or crowded canes to the ground.",
+      "April": "PRUNE, Fertilize",
+      "May": "Begin staking support---REBAR",
+      "June": "Beging staking support- Rebar",
+      "August": "No prune",
+      "October": "Leave branches to antique for winter display."
+    }
+  },
+  "Nootka Rose": {
+    "scientific": "Rosa nutkana",
+    "category": "Shrubs",
+    "tasks": {
+      "February": "PRUNE (Presidents day). remove all dead branches and any smaller than a pencil. Remove crowding and crossing.",
+      "March": "Fertilize.",
+      "April": "Plant in bare root additions.",
+      "May": "Deadhead.",
+      "June": "Deadhead.",
+      "July": "Deadhead.",
+      "August": "Deadhead.",
+      "September": "Leave remaining roses to form hips for winter display and tea.",
+      "October": "Remove dead or damaged canes.",
+      "November": "light prune to protect from wind damage"
+    }
+  },
+  "Blueberries": {
+    "scientific": "Vaccinium corymbosum",
+    "category": "Edibles",
+    "tasks": {
+      "February": "Remove dead, damaged, diseased, crossing canes. Cut all canes 1\" or more in diameter to the ground. Select the 6 strongest new shoots and remove the rest.",
+      "March": "Fertilize.",
+      "June": "HARVEST.",
+      "July": "HARVEST.",
+      "August": "HARVEST."
+    }
+  },
+  "Mexican Orange": {
+    "scientific": "Choisya ternata 'Sundance'",
+    "category": "Evergreens",
+    "tasks": {
+      "May": "PRUNE for form after bloom.",
+      "June": "PRUNE for form after bloom."
+    }
+  },
+  "Pacific Wax Myrtle": {
+    "scientific": "Myrica californica",
+    "category": "Evergreens",
+    "tasks": {
+      "March": "PRUNE for form and airflow."
+    }
+  },
+  "Dwarf Pittosporum": {
+    "scientific": "Pittosporum tobira 'Nanum'",
+    "category": "Evergreens",
+    "tasks": {
+      "March": "Prune for shape and to remove any dead or damaged branches. This encourages bushier growth.",
+      "June": "Water regularly but ensure good drainage to keep away root rot.",
+      "October": "Mulch around the base to help retain moisture and protect roots during the winter."
+    }
+  },
+  "Garden Sage": {
+    "scientific": "Salvia officinalis 'Berggarten'",
+    "category": "Edibles",
+    "tasks": {
+      "May": "PRUNE back to two nodes of new growth.",
+      "June": "HARVEST regularly.",
+      "July": "HARVEST regularly.",
+      "August": "HARVEST regularly.",
+      "September": "HARVEST regularly.",
+      "October": "let rest.",
+      "November": "let rest."
+    }
+  },
+  "Common Thyme": {
+    "scientific": "Thymus vulgaris",
+    "category": "Edibles",
+    "tasks": {
+      "March": "PRUNE back. divide when 3-4 years old.",
+      "April": "HARVEST. take the top 5-6 inches just before flowering for best flavor. Leave at least 5\" of growth above the wood.",
+      "June": "HARVEST and soft PRUNE after blooming",
+      "July": "HARVEST and soft PRUNE after blooming",
+      "October": "Plant out new starts w2. Hard prune mature plants after first frost."
+    }
+  },
+  "Maple": {
+    "scientific": "Acer circinatum / griseum / palmatum",
+    "category": "Trees",
+    "tasks": {
+      "January": "PRUNE for form when bare and dormant",
+      "March": "PRUNE crossing or dense branches when first spring growth appears."
+    }
+  },
+  "Apple": {
+    "scientific": "Malus x domestica",
+    "category": "Trees",
+    "tasks": {
+      "February": "PRUNE crossing, damaged, or dense branches. Prune fruiting branches to closest outward facing nodes.",
+      "March": "Spray with Copper Fungicide"
+    }
+  },
+  "Chocolate Vine": {
+    "scientific": "Akebia quinata",
+    "category": "Vine",
+    "tasks": {
+      "January": "Don't panic if the vine loses some or all its leaves in severe cold.",
+      "March": "Prune lightly to remove deadwood and shape the vine as desired.",
+      "June": "Water regularly to maintain consistant soil moisture."
+    }
+  },
+  "Deer Fern": {
+    "scientific": "Blechnum spicant",
+    "category": "Ferns",
+    "tasks": {
+      "March": "Remove dead or damaged fronds.",
+      "October": "Remove any dead or damaged fronds."
+    }
+  },
+  "Western Sword Fern": {
+    "scientific": "Polystichum munitum",
+    "category": "Ferns",
+    "tasks": {
+      "February": "Remove last years fronds when new fronds start to swell at the base.",
+      "March": "Remove last years fronds when new fronds start to swell at the base."
+    }
+  },
+  "Karl Foerster Grass": {
+    "scientific": "Calamagrostis x acutiflora 'Karl Foerster'",
+    "category": "Grasses",
+    "tasks": {
+      "March": "Cut back old foliage when new foliage begins to show at the bottom.",
+      "October": "Leave seed stems to antique and provide winter interest.",
+      "December": "Remove any damaged seed heads."
+    }
+  },
+  "Creeping Jenny": {
+    "scientific": "Lysimachia nummularia 'Aurea'",
+    "category": "Ground Covers",
+    "tasks": {
+      "March": "Apply a layer of compost as new growth emerges to provide nutrients and maintain moisture through the summer.",
+      "April": "If needed, divide larger plants to rejuvinate growth.",
+      "July": "If flagging, water more regularly. It prefers consistently damp soil.",
+      "August": "If flagging, water more regularly. It prefers consistently damp soil.",
+      "September": "If flagging, water more regularly. It prefers consistently damp soil.",
+      "October": "Trim back foliage to 6\" to prepare for dormancy. Mulch over root bases to protect from winter temperatures."
+    }
+  },
+  "Kinnikinnick": {
+    "scientific": "Arctostaphylos uva-ursi",
+    "category": "Ground Covers",
+    "tasks": {
+      "April": "If needed, lightly prune out dead or damage branches and to maintain shape.",
+      "July": "Water sparingly, alllowing to dry out between waterings.",
+      "October": "Mulch ~2\" to protect base from winter freeze."
+    }
+  },
+  "Strawberries": {
+    "scientific": "Fragaria x",
+    "category": "Ground Covers",
+    "tasks": {
+      "January": "Remove dead sections and runners. Thin healthiest plants to 6\" for edible strawberries.",
+      "April": "Remove shoots to contain spread and encourage bushy growth.",
+      "June": "Remove shoots to contain spread and encourage bushy growth.",
+      "August": "Remove shoots to contain spread and encourage bushy growth.",
+      "October": "Remove shoots to contain spread and encourage bushy growth."
+    }
+  },
+  "Golden Oregano": {
+    "scientific": "Origanum vulgare 'Aureum'",
+    "category": "Edibles",
+    "tasks": {
+      "May": "Cut back generously to encourage bushier growth and continues greenery. Mulch to help retain moisture and protect during hot weather.",
+      "June": "Cut and harvest regularly to promote bushier growth and the best flavor.",
+      "July": "Cut and harvest regularly to promote bushier growth and the best flavor.",
+      "August": "Cut and harvest regularly to promote bushier growth and the best flavor."
+    }
+  },
+  "Japanese Pachysandra": {
+    "scientific": "Pachysandra terminalis",
+    "category": "Ground Covers",
+    "tasks": {
+      "March": "Remove damaged or dead foliage to encourage growth and shape."
+    }
+  },
+  "Mt. Vernon Cherry Laurel": {
+    "scientific": "Prunus laurocerasus 'Mt. Vernon'",
+    "category": "Ground Covers",
+    "tasks": {
+      "April": "Prune for shape after flowering is finished.",
+      "October": "Reduce watering as weather cools to prepare for winter weather. Mulch around base to retain moisture and protect surface roots from freeze."
+    }
+  },
+  "Irish Moss": {
+    "scientific": "Sagina subulata",
+    "category": "Ground Covers",
+    "tasks": {
+      "April": "Remove dead or weak growth.",
+      "September": "Keep debris off of each clump to keep it healthy."
+    }
+  },
+  "Creeping Thyme": {
+    "scientific": "Thymus praecox 'Purple Carpet'",
+    "category": "Ground Covers",
+    "tasks": {
+      "July": "PRUNE back all spent bloom to reinvigorate."
+    }
+  },
+  "Redwood Sorrel": {
+    "scientific": "Oxalis oregana",
+    "category": "Ground Covers",
+    "tasks": {
+      "April": "Divide to propogate new plants if desired."
+    }
+  },
+  "Bleeding Heart": {
+    "scientific": "Dicentra formosa",
+    "category": "Perennials",
+    "tasks": {
+      "May": "If needed, divide and transplant as soon as you see new growth.",
+      "November": "Cut back foliage after first frost."
+    }
+  },
+  "Purple Coneflower": {
+    "scientific": "Echinacea purpurea 'Magnus'",
+    "category": "Perennials",
+    "tasks": {
+      "May": "Chelsea chop (remove 1/2)",
+      "June": "HARVEST regularly.",
+      "July": "HARVEST regularly.",
+      "August": "HARVEST regularly.",
+      "September": "HARVEST last flowers. Leave some flowers to develop seed. sow any additional seed for new spring additions.",
+      "November": "sow for stratification"
+    }
+  },
+  "Seaside Daisy": {
+    "scientific": "Erigeron glaucus",
+    "category": "Perennials",
+    "tasks": {
+      "June": "Deadhead.",
+      "July": "Deadhead.",
+      "August": "Deadhead.",
+      "September": "Deadhead.",
+      "October": "Deadhead."
+    }
+  },
+  "Joe Pye Weed": {
+    "scientific": "Eupatorium maculatum",
+    "category": "Perennials",
+    "tasks": {
+      "October": "Cut down spent foliage to the ground."
+    }
+  },
+  "Cranesbill Geranium": {
+    "scientific": "Geranium macrorrhizum 'Album'",
+    "category": "Perennials",
+    "tasks": {
+      "July": "Cut back to reinvigorate bloom and form.",
+      "October": "Cut back spent foliage."
+    }
+  },
+  "Culver's Root": {
+    "scientific": "Veronicastrum virginicum 'Challenger'",
+    "category": "Perennials",
+    "tasks": {
+      "February": "Cut dead stems to the ground and apply mulch.",
+      "June": "Deadhead spent flowers to encourage more blooms. Cut stems to the ground after flowering for new coliage growth.",
+      "July": "Deadhead spent flowers to encourage more blooms. Cut stems to the ground after flowering for new coliage growth.",
+      "August": "Deadhead spent flowers to encourage more blooms. Cut stems to the ground after flowering for new coliage growth.",
+      "September": "Divide and transplant older clumping plants to rejuvinate and multiply them.",
+      "November": "You can choose to leave fading stems to provide food for winter birds or shelter for pollinators."
+    }
+  },
+  "Bowles' Mauve Wallflower": {
+    "scientific": "Erysimum x 'Bowles' Mauve'",
+    "category": "Perennials",
+    "tasks": {
+      "April": "After initial bloom, prune spent flowers to encocourage reblooming and a bushier habit.",
+      "June": "Deadhead spent flowers to continue bloom.",
+      "July": "Deadhead spent flowers to continue bloom.",
+      "August": "Deadhead spent flowers to continue bloom."
+    }
+  },
+  "Euphorbia": {
+    "scientific": "Euphorbia",
+    "category": "Perennials",
+    "tasks": {
+      "March": "Remove any damaged or old foliage.",
+      "June": "Deadhead.",
+      "July": "Deadhead.",
+      "August": "Deadhead.",
+      "September": "Deadhead."
+    }
+  },
+  "Lenten Rose": {
+    "scientific": "Helleborus x glandorfensis",
+    "category": "Perennials",
+    "tasks": {
+      "January": "Cut old leaves when flowers 5-6\"",
+      "February": "Cut old leaves when flowers 5-6\"",
+      "March": "Once goes to seed, cut back",
+      "April": "Cut back hellebore flowers",
+      "October": "Remove leaves once flowers are 6\" or taller.",
+      "December": "Remove crowded or diseased blooms."
+    }
+  },
+  "Common Chives": {
+    "scientific": "Allium schoenoprasum",
+    "category": "Edibles",
+    "tasks": {
+      "March": "Divide if overly large or hollowing out in the center. Plant divisions or any new plants.",
+      "May": "If flagging, apply a nitrogen rich fertilizer.",
+      "June": "Harvest blooms regularly to control self-seeding and to continue bloom. HARVEST blades that are not plant stems for eating.",
+      "July": "Harvest blooms regularly to control self-seeding and to continue bloom. HARVEST blades that are not plant stems for eating.",
+      "August": "Harvest blooms regularly to control self-seeding and to continue bloom. HARVEST blades that are not plant stems for eating.",
+      "September": "Harvest blooms regularly to control self-seeding and to continue bloom. HARVEST blades that are not plant stems for eating.",
+      "October": "Apply a thick layer of mulch to protect from winter freeze. If flagging, cut back to a few inches above the ground before first frost."
+    }
+  },
+  "Edible Strawberries": {
+    "scientific": "Fragaria x",
+    "category": "Edibles",
+    "tasks": {
+      "January": "Thin healthiest plants to 6\"",
+      "February": "Mulch with pine straw. Fertilize with blood and bone meal.",
+      "June": "HARVEST berries.",
+      "July": "HARVEST berries."
+    }
+  },
+  "Italian Oregano": {
+    "scientific": "Origanum vulgare 'Italian'",
+    "category": "Edibles",
+    "tasks": {
+      "May": "plant out new starts. HARVEST established plants just before flowering for best flavor. cut down to 4\" to encourage root strength and bushiness. Dry and store.",
+      "June": "HARVEST regularly to encourage bushiness.",
+      "July": "HARVEST regularly to encourage bushiness.",
+      "August": "HARVEST regularly to encourage bushiness."
+    }
+  },
+  "Raspberry": {
+    "scientific": "Rubus idaeus 'NR7'",
+    "category": "Edibles",
+    "tasks": {
+      "February": "PRUNE canes that have already fruited all the way to the ground. Remove any new canes that are too crowded. Remove suckers where crowding.",
+      "March": "Incorporate balanced fertilizer, leaving 2-3\" space around stems to keep from burning the roots",
+      "April": "HARVEST leaves.",
+      "June": "HARVEST berries.",
+      "July": "HARVEST berries.",
+      "August": "HARVEST berries.",
+      "September": "HARVEST berries.",
+      "October": "Once harvest is complete, remove all second-year canes (those that fruited), leaving first-year canes to fruit in the fall. Remove any weak canes."
+    }
+  }
+}
