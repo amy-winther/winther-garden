@@ -315,40 +315,30 @@ body {
 /* ── STACK ACTIONS (below card) ─────────── */
 .stack-actions {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 16px 0 4px;
+  flex-direction: row;
+  justify-content: center;
+  gap: 24px;
+  padding: 20px 0 8px;
 }
 
 .action-btn {
-  width: 100%;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
   border: none;
-  border-radius: var(--radius-md);
-  padding: 15px 20px;
-  font-size: 15px;
-  font-weight: 600;
   cursor: pointer;
   font-family: inherit;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   transition: transform 0.1s, opacity 0.15s;
-  line-height: 1;
+  flex-shrink: 0;
 }
-.action-btn:active { transform: scale(0.98); opacity: 0.88; }
+.action-btn:active { transform: scale(0.93); opacity: 0.85; }
 
 .btn-done  { background: #2D6A4F; color: #ffffff; }
-.btn-later {
-  background: transparent;
-  color: var(--text-muted);
-  border: 1.5px solid var(--border);
-}
-.btn-skip {
-  background: transparent;
-  color: var(--danger);
-  border: 1.5px solid #FECACA;
-}
+.btn-later { background: transparent; color: var(--text-muted); border: 2px solid var(--border); }
+.btn-skip  { background: transparent; color: var(--text-muted); border: 2px solid var(--border); }
 
 .btn-icon {
   display: flex;

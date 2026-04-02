@@ -548,10 +548,7 @@ async function init() {
 
   // Header
   document.querySelector(".header-greeting").textContent    = getGreeting();
-  document.querySelector(".header-month-name").textContent  = MONTHS[NOW.getMonth()];
-
-  // History button → switch to grid view
-  document.getElementById("btn-history").addEventListener("click", () => setView("grid"));
+  document.querySelector(".header-month-name").textContent  = `${MONTHS[NOW.getMonth()]} Garden Tasks`;
 
   // View toggle
   document.querySelectorAll(".view-btn").forEach(btn => {
