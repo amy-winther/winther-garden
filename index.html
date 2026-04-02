@@ -5,36 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#EDE8E3">
   <title>Winther Garden</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
   <header class="header">
-    <div class="header-left">
-      <span class="header-title">Winther Garden</span>
-      <span class="header-month"></span>
-    </div>
-    <div class="header-right">
-      <div class="view-toggle">
-        <button class="view-btn active" data-view="stack" title="Stack view">☰</button>
-        <button class="view-btn" data-view="grid" title="Grid view">⊞</button>
-      </div>
+    <span class="header-title">Winther Garden</span>
+    <span class="header-month"></span>
+    <div class="view-toggle">
+      <button class="view-btn active" data-view="stack" title="Stack view">☰</button>
+      <button class="view-btn" data-view="grid" title="Grid view">⊞</button>
     </div>
   </header>
 
-  <div class="progress-bar">
-    <div class="progress-fill" style="width:0%"></div>
-  </div>
-
   <!-- Stack View -->
   <div id="stack-view">
-    <div class="stack-meta">
-      <span class="remaining"></span>
-      <span class="stack-hint-inline" style="font-size:12px;color:var(--text-muted);">Swipe ← Won't do &nbsp;·&nbsp; → Done</span>
-    </div>
     <div class="card-stage"></div>
+    <span class="remaining"></span>
     <div class="done-section"></div>
   </div>
 

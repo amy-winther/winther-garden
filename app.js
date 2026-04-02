@@ -62,13 +62,9 @@ function renderStack() {
   const total   = stackItems.length;
   const remaining = pending.length;
 
-  // Progress
-  document.querySelector(".progress-fill").style.width =
-    total ? `${((total - remaining) / total) * 100}%` : "0%";
-
   // Meta line
-  view.querySelector(".stack-meta .remaining").textContent =
-    remaining > 0 ? `${remaining} of ${total} remaining` : `All ${total} tasks addressed`;
+  view.querySelector(".remaining").textContent =
+    remaining > 0 ? `${remaining} of ${total} remaining` : `All ${total} tasks completed`;
 
   // Card stage
   const stage = view.querySelector(".card-stage");
@@ -100,7 +96,7 @@ function renderStack() {
     return;
   }
   doneSection.innerHTML = `
-    <div class="done-section-title">Addressed <span style="font-weight:400;font-size:11px;color:var(--text-muted);">· swipe to change</span></div>
+    <div class="done-section-title">Completed tasks</div>
     <div class="done-list">
       ${done.map(item => {
         const img = images[item.plant];
