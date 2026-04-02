@@ -618,6 +618,13 @@ function openModal(item, interactive) {
     if (msg) actionsEl = `<div style="padding:0 20px 28px"><div class="modal-past-status">${msg}</div></div>`;
   }
 
+  const savedNote = getNote(item.plant);
+  const noteHtml  = `
+    <div class="modal-note-section">
+      ${savedNote ? `<div class="modal-note-saved">${savedNote}</div>` : ""}
+      <textarea class="modal-note-input" placeholder="Add a note about your garden…">${savedNote}</textarea>
+    </div>`;
+
   sheet.innerHTML = `
     <div class="modal-handle"></div>
     ${photoEl}
@@ -626,8 +633,17 @@ function openModal(item, interactive) {
       <div class="modal-name">${item.plant}</div>
       ${sciEl}
       <div class="modal-task">${item.task}</div>
+      ${noteHtml}
     </div>
     ${actionsEl}`;
+
+  // Auto-save note on input
+  const noteInput  = sheet.querySelector(".modal-note-input");
+  const noteDisplay = sheet.querySelector(".modal-note-saved");
+  noteInput.addEventListener("input", () => {
+    saveNote(item.plant, noteInput.value);
+    if (noteDisplay) noteDisplay.textContent = noteInput.value;
+  });
 
   if (interactive) {
     sheet.querySelectorAll(".action-btn").forEach(btn => {
@@ -655,6 +671,117 @@ function setView(v) {
     b.classList.toggle("active", b.dataset.view === v)
   );
   if (v === "grid") renderGrid();
+}
+
+// ── Streak ───────────────────────────────────────────────────
+function getStreakCount() {
+  let streak = 0;
+  for (let i = NOW.getMonth() - 1; i >= 0; i--) {
+    const tasks = getMonthTasks(CURRENT_YEAR, i);
+    if (tasks.length === 0) break;
+    const { pct } = getMonthCompletion(CURRENT_YEAR, i);
+    if (pct >= 0.8) streak++;
+    else break;
+  }
+  return streak;
+}
+
+function renderStreak() {
+  const count   = getStreakCount();
+  const badge   = document.getElementById("header-streak");
+  const countEl = document.getElementById("streak-count");
+  if (count > 0) {
+    countEl.textContent   = count;
+    badge.style.display   = "flex";
+  } else {
+    badge.style.display   = "none";
+  }
+}
+
+// ── Search ───────────────────────────────────────────────────
+function openSearch() {
+  const overlay = document.getElementById("search-overlay");
+  overlay.style.display = "flex";
+  const input = document.getElementById("search-input");
+  input.value = "";
+  filterSearch("");
+  setTimeout(() => input.focus(), 50);
+}
+
+function closeSearch() {
+  document.getElementById("search-overlay").style.display = "none";
+}
+
+function filterSearch(query) {
+  const resultsEl  = document.getElementById("search-results");
+  const q          = query.trim().toLowerCase();
+  const currentM   = NOW.getMonth();
+  const allPlants  = Object.keys(data);
+
+  const matches = allPlants.filter(name =>
+    !q || name.toLowerCase().includes(q) || (data[name].category || "").toLowerCase().includes(q)
+  );
+
+  if (matches.length === 0) {
+    resultsEl.innerHTML = `<div class="search-empty">No plants found for "${query}"</div>`;
+    return;
+  }
+
+  resultsEl.innerHTML = matches.map(name => {
+    const d        = data[name];
+    const catColor = getCategoryColor(d.category);
+    const img      = images[name];
+    const task     = d.tasks[MONTHS[currentM]];
+
+    const thumb = img
+      ? `<img src="${img}" alt="${name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+         <div class="search-color" style="background:${catColor};display:none">${name[0]}</div>`
+      : `<div class="search-color" style="background:${catColor}">${name[0]}</div>`;
+
+    const taskHtml = task
+      ? `<div class="search-result-task">${task}</div>`
+      : `<div class="search-result-task no-task">No task this month</div>`;
+
+    return `
+      <div class="search-result" data-plant="${name}">
+        <div class="search-result-thumb">${thumb}</div>
+        <div class="search-result-info">
+          <span class="search-result-badge" style="background:${catColor}">${d.category}</span>
+          <div class="search-result-name">${name}</div>
+          ${taskHtml}
+        </div>
+      </div>`;
+  }).join("");
+
+  resultsEl.querySelectorAll(".search-result").forEach(el => {
+    el.addEventListener("click", () => {
+      const name = el.dataset.plant;
+      const d    = data[name];
+      const task = d.tasks[MONTHS[currentM]];
+      closeSearch();
+      const item = {
+        plant: name,
+        data:  d,
+        task:  task || "(No task this month)",
+        state: task ? getState(CURRENT_YEAR, currentM, name) : "pending"
+      };
+      openModal(item, !!task);
+    });
+  });
+}
+
+// ── Notes ────────────────────────────────────────────────────
+function noteKey(plant) {
+  return `wg_note_${CURRENT_YEAR}_${NOW.getMonth()}_${plant}`;
+}
+
+function getNote(plant) {
+  return localStorage.getItem(noteKey(plant)) || "";
+}
+
+function saveNote(plant, text) {
+  if (text.trim()) localStorage.setItem(noteKey(plant), text);
+  else localStorage.removeItem(noteKey(plant));
 }
 
 // ── Inline data (no server required) ────────────────────────
@@ -694,8 +821,15 @@ async function init() {
     if (e.target === e.currentTarget) closeModal();
   });
 
+  // Search
+  document.getElementById("btn-search").addEventListener("click", openSearch);
+  document.getElementById("search-close").addEventListener("click", closeSearch);
+  document.getElementById("search-input").addEventListener("input", e => filterSearch(e.target.value));
+  document.addEventListener("keydown", e => { if (e.key === "Escape") closeSearch(); });
+
   initStack();
   setView("stack");
+  renderStreak();
   showOnboarding();
 }
 
