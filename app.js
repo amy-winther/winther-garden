@@ -49,6 +49,13 @@ function getCategoryColor(category) {
   return CATEGORY_COLORS[category] || "#8A8A72";
 }
 
+function getMonthCompletion(year, month0) {
+  const tasks = getMonthTasks(year, month0);
+  if (tasks.length === 0) return { done: 0, total: 0, pct: 0 };
+  const done = tasks.filter(t => t.state === "done" || t.state === "wont_do").length;
+  return { done, total: tasks.length, pct: done / tasks.length };
+}
+
 function getMonthTasks(year, month0) {
   const monthName = MONTHS[month0];
   return Object.entries(data)
@@ -59,6 +66,86 @@ function getMonthTasks(year, month0) {
       task: d.tasks[monthName],
       state: getState(year, month0, plant)
     }));
+}
+
+// ── Timeline ─────────────────────────────────────────────────
+function renderTimeline() {
+  const container = document.querySelector(".month-timeline");
+  const abbrevs   = ["J","F","M","A","M","J","J","A","S","O","N","D"];
+  const currentM  = NOW.getMonth();
+
+  container.innerHTML = abbrevs.map((abbr, i) => {
+    let cls = "tl-dot";
+    if      (i < currentM)  { const { pct } = getMonthCompletion(CURRENT_YEAR, i); cls += pct >= 0.6 ? " tl-past-good" : " tl-past-low"; }
+    else if (i === currentM) cls += " tl-current";
+    else                     cls += " tl-future";
+    return `<div class="${cls}" data-month="${i}"><div class="tl-circle"></div><span class="tl-abbr">${abbr}</span></div>`;
+  }).join("");
+
+  container.querySelectorAll(".tl-dot").forEach(dot => {
+    const m = parseInt(dot.dataset.month);
+    if (m <= currentM) {
+      dot.addEventListener("click", () => {
+        gridMonth = m; gridYear = CURRENT_YEAR; gridFilterCat = "All";
+        setView("grid");
+      });
+    }
+  });
+}
+
+// ── Later shelf ──────────────────────────────────────────────
+function renderLaterShelf() {
+  const shelf      = document.querySelector(".later-shelf");
+  const laterItems = stackItems.filter(i => i.state === "later");
+
+  if (laterItems.length === 0) {
+    shelf.style.display = "none";
+    shelf.innerHTML = "";
+    return;
+  }
+
+  shelf.style.display = "block";
+  shelf.innerHTML = `
+    <div class="later-shelf-label">Revisit today</div>
+    <div class="later-shelf-scroll">
+      ${laterItems.map(item => {
+        const img      = images[item.plant];
+        const catColor = getCategoryColor(item.data.category);
+        const thumb    = img
+          ? `<img src="${img}" alt="${item.plant}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+             <div class="later-card-color" style="background:${catColor};display:none">${item.plant[0]}</div>`
+          : `<div class="later-card-color" style="background:${catColor}">${item.plant[0]}</div>`;
+        return `
+          <div class="later-card" data-plant="${item.plant}">
+            <div class="later-card-thumb">${thumb}</div>
+            <div class="later-card-name">${item.plant}</div>
+          </div>`;
+      }).join("")}
+    </div>`;
+
+  shelf.querySelectorAll(".later-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const item = stackItems.find(i => i.plant === card.dataset.plant);
+      if (!item) return;
+      setState(CURRENT_YEAR, NOW.getMonth(), item.plant, "pending");
+      item.state = "pending";
+      const idx = stackItems.indexOf(item);
+      if (idx !== -1) stackItems.splice(idx, 1);
+      stackItems.unshift(item);
+      renderStack();
+    });
+  });
+}
+
+// ── Onboarding ───────────────────────────────────────────────
+function showOnboarding() {
+  if (localStorage.getItem("wg_onboarded")) return;
+  const overlay = document.getElementById("onboarding");
+  overlay.style.display = "flex";
+  document.getElementById("onboarding-dismiss").addEventListener("click", () => {
+    overlay.style.display = "none";
+    localStorage.setItem("wg_onboarded", "1");
+  });
 }
 
 // ── Stack view ───────────────────────────────────────────────
@@ -97,9 +184,8 @@ function renderStack() {
   const total     = stackItems.length;
   const remaining = pending.length;
 
-  // Counter
-  view.querySelector(".remaining").textContent =
-    remaining > 0 ? `${remaining} of ${total} remaining` : `All ${total} tasks completed`;
+  renderTimeline();
+  renderLaterShelf();
 
   // Card stage
   const stage = view.querySelector(".card-stage");
@@ -403,6 +489,7 @@ function renderGrid() {
   const tasks         = getMonthTasks(gridYear, gridMonth);
   const monthName     = MONTHS[gridMonth];
   const isCurrentMonth = gridMonth === NOW.getMonth() && gridYear === NOW.getFullYear();
+  const isFutureMonth  = gridYear > NOW.getFullYear() || (gridYear === NOW.getFullYear() && gridMonth > NOW.getMonth());
 
   // Month nav label
   const label = view.querySelector(".month-nav-label");
@@ -413,6 +500,28 @@ function renderGrid() {
   // Prev / next bounds
   view.querySelector(".prev-month").disabled = (gridYear === CURRENT_YEAR - 1 && gridMonth === 0);
   view.querySelector(".next-month").disabled = (gridMonth === NOW.getMonth() && gridYear === NOW.getFullYear());
+
+  // Progress bar (past + current months only)
+  let progressHtml = "";
+  if (!isFutureMonth && tasks.length > 0) {
+    const { done, total, pct } = getMonthCompletion(gridYear, gridMonth);
+    progressHtml = `
+      <div class="grid-progress">
+        <div class="grid-progress-meta">
+          <span>${done} of ${total} complete</span>
+          <span>${Math.round(pct * 100)}%</span>
+        </div>
+        <div class="grid-progress-track">
+          <div class="grid-progress-fill" style="width:${Math.round(pct * 100)}%"></div>
+        </div>
+      </div>`;
+  }
+
+  // Inject or update progress bar
+  let progressEl = view.querySelector(".grid-progress");
+  if (progressEl) progressEl.remove();
+  const filterEl = view.querySelector(".grid-filter");
+  filterEl.insertAdjacentHTML("beforebegin", progressHtml);
 
   // Filter chips
   const cats          = ["All", ...new Set(tasks.map(t => t.data.category))];
@@ -448,13 +557,19 @@ function renderGrid() {
          </div>`;
 
     let badgeHtml = "";
-    if (item.state === "done")    badgeHtml = `<div class="mini-card-status-badge badge-done">✓</div>`;
-    if (item.state === "wont_do") badgeHtml = `<div class="mini-card-status-badge badge-wont_do">✗</div>`;
-    if (item.state === "later")   badgeHtml = `<div class="mini-card-status-badge badge-later">↩</div>`;
+    if (!isFutureMonth) {
+      if (item.state === "done")    badgeHtml = `<div class="mini-card-status-badge badge-done">✓</div>`;
+      if (item.state === "wont_do") badgeHtml = `<div class="mini-card-status-badge badge-wont_do">✗</div>`;
+      if (item.state === "later")   badgeHtml = `<div class="mini-card-status-badge badge-later">↩</div>`;
+    }
+
+    const futureCls  = isFutureMonth ? " is-future" : "";
+    const futureTag  = isFutureMonth ? `<div class="mini-card-future-tag">Upcoming</div>` : "";
 
     return `
-      <div class="mini-card state-${item.state}" data-plant="${item.plant}">
+      <div class="mini-card state-${item.state}${futureCls}" data-plant="${item.plant}">
         ${photoEl}
+        ${futureTag}
         <div class="mini-card-body">
           <div class="mini-card-name">${item.plant}</div>
           <div class="mini-card-task">${item.task}</div>
@@ -496,6 +611,12 @@ function openModal(item, interactive) {
         <button class="action-btn btn-later" data-action="later"><span class="btn-icon">↩</span>Later</button>
         <button class="action-btn btn-skip"  data-action="wont_do"><span class="btn-icon">✗</span>Won't Do</button>
       </div>`;
+  } else if (item.state !== "pending") {
+    const msg = item.state === "done"    ? "✓ Marked as done" :
+                item.state === "wont_do" ? "✗ Skipped this month" :
+                item.state === "later"   ? "↩ Deferred" : "";
+    if (msg) actionsEl = `<div style="padding:0 20px 28px"><div class="modal-past-status">${msg}</div></div>`;
+  }
   }
 
   sheet.innerHTML = `
@@ -576,6 +697,7 @@ async function init() {
 
   initStack();
   setView("stack");
+  showOnboarding();
 }
 
 document.addEventListener("DOMContentLoaded", init);
