@@ -336,9 +336,9 @@ body {
 }
 .action-btn:active { transform: scale(0.93); opacity: 0.85; }
 
-.btn-done  { background: #2D6A4F; color: #ffffff; }
-.btn-later { background: transparent; color: var(--text-muted); border: 2px solid var(--border); }
-.btn-skip  { background: transparent; color: var(--text-muted); border: 2px solid var(--border); }
+.btn-done  { background: #2D6A4F; color: #ffffff; border: none; }
+.btn-later { background: rgba(0,0,0,0.07); color: var(--text-muted); border: none; }
+.btn-skip  { background: rgba(0,0,0,0.07); color: var(--text-muted); border: none; }
 
 .btn-icon {
   display: flex;
