@@ -116,7 +116,8 @@ function renderStack() {
   } else {
     const cards = pending.slice(0, 3);
     [...cards].reverse().forEach((item, revIdx) => {
-      const card = buildCard(item, revIdx === cards.length - 1);
+      const isTop = revIdx === cards.length - 1;
+      const card = buildCard(item, isTop, isTop ? `${remaining} of ${total}` : null);
       stage.prepend(card);
     });
     attachSwipe(stage.firstChild, pending[0]);
@@ -164,7 +165,7 @@ function renderStack() {
   });
 }
 
-function buildCard(item, isTop) {
+function buildCard(item, isTop, counterText) {
   const img      = images[item.plant];
   const catColor = getCategoryColor(item.data.category);
 
@@ -182,6 +183,7 @@ function buildCard(item, isTop) {
   card.className = "card";
   card.style.zIndex = isTop ? 10 : "";
   card.innerHTML = `
+    ${counterText ? `<div class="card-counter">${counterText}</div>` : ''}
     <div class="swipe-indicator done-label">DONE ✓</div>
     <div class="swipe-indicator skip-label">SKIP ✗</div>
     ${photoEl}

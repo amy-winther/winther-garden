@@ -123,12 +123,20 @@ body {
   padding: 0 16px 32px;
 }
 
-.remaining {
-  display: block;
-  text-align: center;
+.remaining { display: none; }
+
+.card-counter {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 4;
   font-size: 12px;
-  color: var(--text-muted);
-  padding: 14px 0 6px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  background: rgba(0,0,0,0.28);
+  padding: 4px 10px;
+  border-radius: 99px;
+  pointer-events: none;
   letter-spacing: 0.2px;
 }
 
