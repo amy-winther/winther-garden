@@ -617,7 +617,6 @@ function openModal(item, interactive) {
                 item.state === "later"   ? "↩ Deferred" : "";
     if (msg) actionsEl = `<div style="padding:0 20px 28px"><div class="modal-past-status">${msg}</div></div>`;
   }
-  }
 
   sheet.innerHTML = `
     <div class="modal-handle"></div>
