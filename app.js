@@ -1,20 +1,32 @@
 const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
 const CATEGORY_ICONS = {
   "General": "🌿", "Trees": "🌳", "Shrubs": "🌸", "Edibles": "🍓",
   "Evergreens": "🌲", "Ferns": "🌿", "Grasses": "🌾", "Vine": "🍃",
   "Ground Covers": "🍀", "Perennials": "💐"
 };
 
+const CATEGORY_COLORS = {
+  "General":       "#8A8A72",
+  "Trees":         "#2D6A4F",
+  "Shrubs":        "#B8829A",
+  "Edibles":       "#C8704A",
+  "Evergreens":    "#3A7D44",
+  "Ferns":         "#5C8A5A",
+  "Grasses":       "#A08E5A",
+  "Vine":          "#6B8E6B",
+  "Ground Covers": "#7B9E87",
+  "Perennials":    "#7C6FAD"
+};
+
 let data = {};
 let images = {};
 let currentView = "stack";
-let gridMonth = new Date().getMonth(); // 0-indexed
-let gridYear = new Date().getFullYear();
+let gridMonth = new Date().getMonth();
+let gridYear  = new Date().getFullYear();
 
 // State
-function stateKey(year, month, plant) {
-  return `wg_${year}_${month}_${plant}`;
-}
+function stateKey(year, month, plant) { return `wg_${year}_${month}_${plant}`; }
 function getState(year, month, plant) {
   return localStorage.getItem(stateKey(year, month, plant)) || "pending";
 }
@@ -22,13 +34,22 @@ function setState(year, month, plant, state) {
   localStorage.setItem(stateKey(year, month, plant), state);
 }
 
-// Current month tasks (stack view always uses real current month)
-const NOW = new Date();
+const NOW           = new Date();
 const CURRENT_MONTH = MONTHS[NOW.getMonth()];
-const CURRENT_YEAR = NOW.getFullYear();
+const CURRENT_YEAR  = NOW.getFullYear();
+
+function getGreeting() {
+  const h = NOW.getHours();
+  if (h < 12) return "Good Morning";
+  if (h < 17) return "Good Afternoon";
+  return "Good Evening";
+}
+
+function getCategoryColor(category) {
+  return CATEGORY_COLORS[category] || "#8A8A72";
+}
 
 function getMonthTasks(year, month0) {
-  // Returns [{plant, data, state}] for plants with tasks in given month (0-indexed)
   const monthName = MONTHS[month0];
   return Object.entries(data)
     .filter(([, d]) => d.tasks[monthName])
@@ -41,28 +62,42 @@ function getMonthTasks(year, month0) {
 }
 
 // ── Stack view ───────────────────────────────────────────────
-let stackItems = [];     // [{plant, data, task, state}]
-let stackIndex = 0;      // current top card index
+let stackItems = [];
 
 function initStack() {
-  const all = getMonthTasks(CURRENT_YEAR, NOW.getMonth());
-  // pending + later first, done/wont_do at end (already dismissed)
+  const all     = getMonthTasks(CURRENT_YEAR, NOW.getMonth());
   const pending = all.filter(i => i.state === "pending" || i.state === "later");
   const done    = all.filter(i => i.state === "done" || i.state === "wont_do");
-  stackItems = [...pending, ...done];
-  stackIndex = 0;
+  stackItems    = [...pending, ...done];
   renderStack();
 }
 
-function renderStack() {
-  const view = document.getElementById("stack-view");
+function bindStackActions(item) {
+  const stackActions = document.querySelector(".stack-actions");
+  if (!item) {
+    stackActions.style.display = "none";
+    return;
+  }
+  stackActions.style.display = "flex";
+  // Replace buttons to remove stale listeners
+  stackActions.querySelectorAll(".action-btn").forEach(btn => {
+    const fresh = btn.cloneNode(true);
+    btn.replaceWith(fresh);
+    fresh.addEventListener("click", e => {
+      e.stopPropagation();
+      handleAction(item, fresh.dataset.action);
+    });
+  });
+}
 
-  const pending = stackItems.filter(i => i.state !== "done" && i.state !== "wont_do");
-  const done    = stackItems.filter(i => i.state === "done" || i.state === "wont_do");
-  const total   = stackItems.length;
+function renderStack() {
+  const view      = document.getElementById("stack-view");
+  const pending   = stackItems.filter(i => i.state !== "done" && i.state !== "wont_do");
+  const done      = stackItems.filter(i => i.state === "done" || i.state === "wont_do");
+  const total     = stackItems.length;
   const remaining = pending.length;
 
-  // Meta line
+  // Counter
   view.querySelector(".remaining").textContent =
     remaining > 0 ? `${remaining} of ${total} remaining` : `All ${total} tasks completed`;
 
@@ -71,71 +106,73 @@ function renderStack() {
   stage.innerHTML = "";
 
   if (remaining === 0) {
+    bindStackActions(null);
     stage.innerHTML = `
       <div class="empty-state">
-        <div class="empty-state-icon">🎉</div>
+        <span class="empty-state-icon">🌱</span>
         <div class="empty-state-title">All done for ${CURRENT_MONTH}!</div>
-        <div class="empty-state-text">Check the grid view to review past months or see what's coming up.</div>
+        <div class="empty-state-text">Your garden is taken care of. Check the grid view to review past months or plan ahead.</div>
       </div>`;
   } else {
-    // Render top 3 pending cards (for stacking depth effect)
     const cards = pending.slice(0, 3);
-    // Render in reverse so top card is first in DOM (highest z-index via explicit z-index)
     [...cards].reverse().forEach((item, revIdx) => {
       const card = buildCard(item, revIdx === cards.length - 1);
       stage.prepend(card);
     });
-    // Top card is firstChild (prepended last = highest in DOM order = z-index 10)
     attachSwipe(stage.firstChild, pending[0]);
+    bindStackActions(pending[0]);
   }
 
-  // Done list
+  // Done stamps
   const doneSection = view.querySelector(".done-section");
   if (done.length === 0) {
     doneSection.innerHTML = "";
     return;
   }
+
   doneSection.innerHTML = `
-    <div class="done-section-title">Completed tasks</div>
-    <div class="done-list">
+    <div class="done-section-title">Completed · ${done.length}</div>
+    <div class="done-stamps">
       ${done.map(item => {
-        const img = images[item.plant];
-        const initial = item.plant[0];
-        const imgEl = img
-          ? `<img class="done-card-img" src="${img}" alt="${item.plant}" loading="lazy">`
-          : `<div class="done-card-img" style="display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#059669;">${initial}</div>`;
-        const statusLabel = item.state === "done"
-          ? `<span class="status-done">✓ Done</span>`
-          : `<span class="status-wont">✗ Won't do</span>`;
-        const toggleLabel = item.state === "done" ? "✗ Won't Do" : "✓ Done";
+        const img      = images[item.plant];
+        const catColor = getCategoryColor(item.data.category);
+        const icon     = item.state === "done" ? "✓" : "✗";
+        const toggleLabel = item.state === "done" ? "✗ Skip" : "✓ Done";
+
+        const thumbInner = img
+          ? `<img src="${img}" alt="${item.plant}" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+             ><div class="stamp-color" style="background:${catColor};display:none">${item.plant[0]}</div>`
+          : `<div class="stamp-color" style="background:${catColor}">${item.plant[0]}</div>`;
+
         return `
-          <div class="done-card" data-plant="${item.plant}">
-            <div class="done-hint reopen-hint">↩ Reopen</div>
-            <div class="done-hint toggle-hint">${toggleLabel}</div>
-            ${imgEl}
-            <div class="done-card-info">
-              <div class="done-card-name">${item.plant}</div>
-              <div class="done-card-status">${statusLabel}</div>
+          <div class="stamp-card" data-plant="${item.plant}">
+            <div class="stamp-thumb">
+              ${thumbInner}
+              <div class="stamp-badge-overlay">${icon}</div>
+              <div class="done-hint reopen-hint">↩</div>
+              <div class="done-hint toggle-hint">${toggleLabel}</div>
             </div>
+            <div class="stamp-name">${item.plant}</div>
           </div>`;
       }).join("")}
     </div>`;
 
-  // Attach swipe to each done card
-  doneSection.querySelectorAll(".done-card").forEach(el => {
+  doneSection.querySelectorAll(".stamp-card").forEach(el => {
     const item = done.find(i => i.plant === el.dataset.plant);
     if (item) attachDoneSwipe(el, item);
   });
 }
 
 function buildCard(item, isTop) {
-  const img = images[item.plant];
-  const initial = item.plant[0];
-  const icon = CATEGORY_ICONS[item.data.category] || "🌿";
+  const img      = images[item.plant];
+  const catColor = getCategoryColor(item.data.category);
 
   const photoEl = img
-    ? `<img class="card-photo" src="${img}" alt="${item.plant}" draggable="false" loading="lazy">`
-    : `<div class="card-photo-placeholder">${icon}</div>`;
+    ? `<img class="card-photo" src="${img}" alt="${item.plant}" draggable="false" loading="lazy"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+       ><div class="card-photo-placeholder" style="background:${catColor};display:none">${item.plant[0]}</div>`
+    : `<div class="card-photo-placeholder" style="background:${catColor}">${item.plant[0]}</div>`;
 
   const sciEl = item.data.scientific
     ? `<div class="card-scientific">${item.data.scientific}</div>`
@@ -145,27 +182,17 @@ function buildCard(item, isTop) {
   card.className = "card";
   card.style.zIndex = isTop ? 10 : "";
   card.innerHTML = `
-    <div class="swipe-indicator done-label">DONE</div>
-    <div class="swipe-indicator skip-label">SKIP</div>
+    <div class="swipe-indicator done-label">DONE ✓</div>
+    <div class="swipe-indicator skip-label">SKIP ✗</div>
     ${photoEl}
-    <div class="card-body">
-      <span class="card-badge">${item.data.category}</span>
+    <div class="card-scrim"></div>
+    <div class="card-wash"></div>
+    <div class="card-overlay">
+      <span class="card-badge" style="background:${catColor}cc">${item.data.category}</span>
       <div class="card-name">${item.plant}</div>
       ${sciEl}
       <div class="card-task">${item.task}</div>
-    </div>
-    <div class="card-actions">
-      <button class="action-btn btn-done"  data-action="done" ><span class="btn-icon">✓</span>Done</button>
-      <button class="action-btn btn-later" data-action="later"><span class="btn-icon">↩</span>Later</button>
-      <button class="action-btn btn-skip"  data-action="wont_do"><span class="btn-icon">✗</span>Won't Do</button>
     </div>`;
-
-  card.querySelectorAll(".action-btn").forEach(btn => {
-    btn.addEventListener("click", e => {
-      e.stopPropagation();
-      handleAction(item, btn.dataset.action);
-    });
-  });
 
   return card;
 }
@@ -174,18 +201,15 @@ function handleAction(item, action) {
   setState(CURRENT_YEAR, NOW.getMonth(), item.plant, action);
   item.state = action;
 
-  const stage = document.querySelector(".card-stage");
+  const stage   = document.querySelector(".card-stage");
   const topCard = stage.firstChild;
 
   if (action === "later") {
-    // Remove from current position, add to end of pending
     const idx = stackItems.indexOf(item);
     if (idx !== -1) stackItems.splice(idx, 1);
     stackItems.push(item);
-    // Dramatic arc-to-back animation
     if (topCard && topCard.classList.contains("card")) {
       topCard.classList.add("animate-to-back");
-      // Flash the card behind to give physical depth cue
       topCard.style.zIndex = "10";
       topCard.addEventListener("animationend", () => renderStack(), { once: true });
     } else {
@@ -201,21 +225,23 @@ function handleAction(item, action) {
   }
 }
 
-// ── Touch/mouse swipe ────────────────────────────────────────
+// ── Touch / mouse swipe ──────────────────────────────────────
 function attachSwipe(card, item) {
   if (!card || !item) return;
 
-  let startX = 0, startY = 0, deltaX = 0;
+  let startX = 0, startY = 0, startTime = 0, deltaX = 0;
   let active = false;
-  let direction = null; // 'h' | 'v' | null — locked after LOCK_PX
+  let direction = null;
   const THRESHOLD = 80;
-  const LOCK_PX = 8; // pixels of movement before locking direction
+  const LOCK_PX   = 8;
 
   const doneLabel = card.querySelector(".done-label");
   const skipLabel = card.querySelector(".skip-label");
+  const cardWash  = card.querySelector(".card-wash");
 
   function start(x, y) {
     startX = x; startY = y; deltaX = 0;
+    startTime = Date.now();
     active = true; direction = null;
   }
 
@@ -224,19 +250,29 @@ function attachSwipe(card, item) {
     const dx = x - startX;
     const dy = y - startY;
 
-    // Lock direction once we have enough movement
     if (!direction && Math.hypot(dx, dy) > LOCK_PX) {
       direction = Math.abs(dx) >= Math.abs(dy) ? "h" : "v";
     }
-    if (direction !== "h") return; // vertical — let the browser handle it
+    if (direction !== "h") return;
 
     deltaX = dx;
     card.classList.add("is-swiping");
-    card.style.transform = `translateX(${deltaX}px) rotate(${deltaX * 0.05}deg)`;
+    card.style.transform = `translateX(${deltaX}px) rotate(${deltaX * 0.04}deg)`;
 
     const pct = Math.min(Math.abs(deltaX) / THRESHOLD, 1);
     doneLabel.style.opacity = deltaX > 0 ? pct : 0;
     skipLabel.style.opacity = deltaX < 0 ? pct : 0;
+
+    // Color wash on card
+    if (deltaX > 0) {
+      cardWash.style.background = "rgba(45,106,79,0.32)";
+      cardWash.style.opacity = pct;
+    } else if (deltaX < 0) {
+      cardWash.style.background = "rgba(185,28,28,0.28)";
+      cardWash.style.opacity = pct;
+    } else {
+      cardWash.style.opacity = 0;
+    }
   }
 
   function end() {
@@ -246,26 +282,27 @@ function attachSwipe(card, item) {
     card.style.transform = "";
     doneLabel.style.opacity = 0;
     skipLabel.style.opacity = 0;
+    cardWash.style.opacity  = 0;
 
     if (direction === "h") {
-      if (deltaX >  THRESHOLD) handleAction(item, "done");
-      else if (deltaX < -THRESHOLD) handleAction(item, "wont_do");
+      const elapsed  = Date.now() - startTime;
+      const velocity = Math.abs(deltaX) / (elapsed || 1);
+      const commit   = velocity > 0.8 ? 40 : THRESHOLD;
+
+      if (deltaX >  commit) handleAction(item, "done");
+      else if (deltaX < -commit) handleAction(item, "wont_do");
     }
     direction = null;
   }
 
-  // Mouse
   card.addEventListener("mousedown", e => {
     if (e.target.closest(".action-btn")) return;
     e.preventDefault();
     start(e.clientX, e.clientY);
   });
-  const onMouseMove = e => move(e.clientX, e.clientY);
-  const onMouseUp   = () => end();
-  document.addEventListener("mousemove", onMouseMove);
-  document.addEventListener("mouseup",   onMouseUp);
+  document.addEventListener("mousemove", e => move(e.clientX, e.clientY));
+  document.addEventListener("mouseup",   () => end());
 
-  // Touch — non-passive so we can preventDefault on horizontal swipes
   card.addEventListener("touchstart", e => {
     if (e.target.closest(".action-btn")) return;
     start(e.touches[0].clientX, e.touches[0].clientY);
@@ -275,10 +312,7 @@ function attachSwipe(card, item) {
     if (!active) return;
     const dx = Math.abs(e.touches[0].clientX - startX);
     const dy = Math.abs(e.touches[0].clientY - startY);
-    // Lock as horizontal? Block scroll so card tracks finger
-    if (direction === "h" || (dx > dy && dx > LOCK_PX)) {
-      e.preventDefault();
-    }
+    if (direction === "h" || (dx > dy && dx > LOCK_PX)) e.preventDefault();
     move(e.touches[0].clientX, e.touches[0].clientY);
   }, { passive: false });
 
@@ -286,12 +320,12 @@ function attachSwipe(card, item) {
   card.addEventListener("touchcancel", () => end());
 }
 
-// ── Done-card swipe (reopen / toggle) ────────────────────────
+// ── Done-stamp swipe (reopen / toggle) ──────────────────────
 function attachDoneSwipe(el, item) {
   let startX = 0, startY = 0, deltaX = 0;
   let active = false, direction = null;
-  const THRESHOLD = 60;
-  const LOCK_PX = 8;
+  const THRESHOLD = 50;
+  const LOCK_PX   = 8;
 
   const reopenHint = el.querySelector(".reopen-hint");
   const toggleHint = el.querySelector(".toggle-hint");
@@ -309,7 +343,6 @@ function attachDoneSwipe(el, item) {
       direction = Math.abs(dx) >= Math.abs(dy) ? "h" : "v";
     }
     if (direction !== "h") return;
-
     deltaX = dx;
     el.classList.add("is-swiping");
     el.style.transform = `translateX(${deltaX}px)`;
@@ -328,15 +361,13 @@ function attachDoneSwipe(el, item) {
 
     if (direction === "h") {
       if (deltaX > THRESHOLD) {
-        // Reopen: move to front of stack as pending
         setState(CURRENT_YEAR, NOW.getMonth(), item.plant, "pending");
         item.state = "pending";
         const idx = stackItems.indexOf(item);
         if (idx !== -1) stackItems.splice(idx, 1);
-        stackItems.unshift(item); // front of stack
+        stackItems.unshift(item);
         renderStack();
       } else if (deltaX < -THRESHOLD) {
-        // Toggle done ↔ wont_do
         const next = item.state === "done" ? "wont_do" : "done";
         setState(CURRENT_YEAR, NOW.getMonth(), item.plant, next);
         item.state = next;
@@ -347,10 +378,8 @@ function attachDoneSwipe(el, item) {
   }
 
   el.addEventListener("mousedown", e => { e.preventDefault(); start(e.clientX, e.clientY); });
-  const onMouseMove = e => move(e.clientX, e.clientY);
-  const onMouseUp   = () => end();
-  document.addEventListener("mousemove", onMouseMove);
-  document.addEventListener("mouseup",   onMouseUp);
+  document.addEventListener("mousemove", e => move(e.clientX, e.clientY));
+  document.addEventListener("mouseup",   () => end());
 
   el.addEventListener("touchstart", e => start(e.touches[0].clientX, e.touches[0].clientY), { passive: true });
   el.addEventListener("touchmove", e => {
@@ -368,9 +397,9 @@ function attachDoneSwipe(el, item) {
 let gridFilterCat = "All";
 
 function renderGrid() {
-  const view = document.getElementById("grid-view");
-  const tasks = getMonthTasks(gridYear, gridMonth);
-  const monthName = MONTHS[gridMonth];
+  const view          = document.getElementById("grid-view");
+  const tasks         = getMonthTasks(gridYear, gridMonth);
+  const monthName     = MONTHS[gridMonth];
   const isCurrentMonth = gridMonth === NOW.getMonth() && gridYear === NOW.getFullYear();
 
   // Month nav label
@@ -379,26 +408,23 @@ function renderGrid() {
     ? `<span class="month-nav-current">${monthName} ${gridYear}</span>`
     : `${monthName} ${gridYear}`;
 
-  // Prev/next
+  // Prev / next bounds
   view.querySelector(".prev-month").disabled = (gridYear === CURRENT_YEAR - 1 && gridMonth === 0);
   view.querySelector(".next-month").disabled = (gridMonth === NOW.getMonth() && gridYear === NOW.getFullYear());
 
   // Filter chips
-  const cats = ["All", ...new Set(tasks.map(t => t.data.category))];
+  const cats          = ["All", ...new Set(tasks.map(t => t.data.category))];
   const chipContainer = view.querySelector(".grid-filter");
-  chipContainer.innerHTML = cats.map(c => `
-    <button class="filter-chip ${c === gridFilterCat ? "active" : ""}" data-cat="${c}">${c}</button>
-  `).join("");
+  chipContainer.innerHTML = cats.map(c =>
+    `<button class="filter-chip ${c === gridFilterCat ? "active" : ""}" data-cat="${c}">${c}</button>`
+  ).join("");
   chipContainer.querySelectorAll(".filter-chip").forEach(btn => {
-    btn.addEventListener("click", () => {
-      gridFilterCat = btn.dataset.cat;
-      renderGrid();
-    });
+    btn.addEventListener("click", () => { gridFilterCat = btn.dataset.cat; renderGrid(); });
   });
 
   // Cards
   const filtered = gridFilterCat === "All" ? tasks : tasks.filter(t => t.data.category === gridFilterCat);
-  const grid = view.querySelector(".grid-cards");
+  const grid     = view.querySelector(".grid-cards");
 
   if (filtered.length === 0) {
     grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:32px;color:var(--text-muted);font-size:14px;">No tasks for ${gridFilterCat} in ${monthName}.</div>`;
@@ -406,11 +432,18 @@ function renderGrid() {
   }
 
   grid.innerHTML = filtered.map(item => {
-    const img = images[item.plant];
-    const icon = CATEGORY_ICONS[item.data.category] || "🌿";
+    const img      = images[item.plant];
+    const catColor = getCategoryColor(item.data.category);
+
     const photoEl = img
-      ? `<img class="mini-card-photo" src="${img}" alt="${item.plant}" loading="lazy">`
-      : `<div class="mini-card-placeholder">${icon}</div>`;
+      ? `<img class="mini-card-photo" src="${img}" alt="${item.plant}" loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+         ><div class="mini-card-placeholder" style="background:${catColor};display:none">
+           <span style="font-size:24px;color:rgba(255,255,255,0.75)">${item.plant[0]}</span>
+         </div>`
+      : `<div class="mini-card-placeholder" style="background:${catColor}">
+           <span style="font-size:24px;color:rgba(255,255,255,0.75)">${item.plant[0]}</span>
+         </div>`;
 
     let badgeHtml = "";
     if (item.state === "done")    badgeHtml = `<div class="mini-card-status-badge badge-done">✓</div>`;
@@ -430,8 +463,7 @@ function renderGrid() {
 
   grid.querySelectorAll(".mini-card").forEach(card => {
     card.addEventListener("click", () => {
-      const plantName = card.dataset.plant;
-      const item = tasks.find(t => t.plant === plantName);
+      const item = tasks.find(t => t.plant === card.dataset.plant);
       if (item) openModal(item, isCurrentMonth);
     });
   });
@@ -439,14 +471,16 @@ function renderGrid() {
 
 // ── Modal ────────────────────────────────────────────────────
 function openModal(item, interactive) {
-  const overlay = document.getElementById("modal-overlay");
-  const sheet = overlay.querySelector(".modal-sheet");
-  const img = images[item.plant];
-  const icon = CATEGORY_ICONS[item.data.category] || "🌿";
+  const overlay  = document.getElementById("modal-overlay");
+  const sheet    = overlay.querySelector(".modal-sheet");
+  const img      = images[item.plant];
+  const catColor = getCategoryColor(item.data.category);
 
   const photoEl = img
-    ? `<img class="modal-photo" src="${img}" alt="${item.plant}">`
-    : `<div class="modal-placeholder">${icon}</div>`;
+    ? `<img class="modal-photo" src="${img}" alt="${item.plant}"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+       ><div class="modal-placeholder" style="background:${catColor};display:none">${item.plant[0]}</div>`
+    : `<div class="modal-placeholder" style="background:${catColor}">${item.plant[0]}</div>`;
 
   const sciEl = item.data.scientific
     ? `<div class="modal-scientific">${item.data.scientific}</div>`
@@ -479,7 +513,6 @@ function openModal(item, interactive) {
         handleAction(item, btn.dataset.action);
         closeModal();
         renderGrid();
-        renderStack();
       });
     });
   }
@@ -496,23 +529,27 @@ function setView(v) {
   currentView = v;
   document.getElementById("stack-view").style.display = v === "stack" ? "block" : "none";
   document.getElementById("grid-view").style.display  = v === "grid"  ? "block" : "none";
-  document.querySelectorAll(".view-btn").forEach(b => b.classList.toggle("active", b.dataset.view === v));
+  document.querySelectorAll(".view-btn").forEach(b =>
+    b.classList.toggle("active", b.dataset.view === v)
+  );
   if (v === "grid") renderGrid();
 }
 
 // ── Init ─────────────────────────────────────────────────────
 async function init() {
-  // Load data
   const [dataRes, imgRes] = await Promise.all([
     fetch("data.json").then(r => r.json()).catch(() => ({})),
     fetch("images.json").then(r => r.json()).catch(() => ({})),
   ]);
-  data = dataRes;
+  data   = dataRes;
   images = imgRes;
 
-  // Header month
-  document.querySelector(".header-month").textContent =
-    `${MONTHS[NOW.getMonth()]} ${NOW.getFullYear()}`;
+  // Header
+  document.querySelector(".header-greeting").textContent    = getGreeting();
+  document.querySelector(".header-month-name").textContent  = MONTHS[NOW.getMonth()];
+
+  // History button → switch to grid view
+  document.getElementById("btn-history").addEventListener("click", () => setView("grid"));
 
   // View toggle
   document.querySelectorAll(".view-btn").forEach(btn => {
@@ -521,14 +558,12 @@ async function init() {
 
   // Grid month nav
   document.querySelector(".prev-month").addEventListener("click", () => {
-    if (gridMonth === 0) { gridMonth = 11; gridYear--; }
-    else gridMonth--;
+    if (gridMonth === 0) { gridMonth = 11; gridYear--; } else gridMonth--;
     gridFilterCat = "All";
     renderGrid();
   });
   document.querySelector(".next-month").addEventListener("click", () => {
-    if (gridMonth === 11) { gridMonth = 0; gridYear++; }
-    else gridMonth++;
+    if (gridMonth === 11) { gridMonth = 0; gridYear++; } else gridMonth++;
     gridFilterCat = "All";
     renderGrid();
   });
@@ -538,7 +573,6 @@ async function init() {
     if (e.target === e.currentTarget) closeModal();
   });
 
-  // Initial render
   initStack();
   setView("stack");
 }
