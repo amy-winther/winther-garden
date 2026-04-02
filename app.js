@@ -100,11 +100,10 @@ function renderStack() {
     return;
   }
   doneSection.innerHTML = `
-    <div class="done-section-title">Addressed</div>
+    <div class="done-section-title">Addressed <span style="font-weight:400;font-size:11px;color:var(--text-muted);">· swipe to change</span></div>
     <div class="done-list">
       ${done.map(item => {
         const img = images[item.plant];
-        const icon = CATEGORY_ICONS[item.data.category] || "🌿";
         const initial = item.plant[0];
         const imgEl = img
           ? `<img class="done-card-img" src="${img}" alt="${item.plant}" loading="lazy">`
@@ -112,8 +111,11 @@ function renderStack() {
         const statusLabel = item.state === "done"
           ? `<span class="status-done">✓ Done</span>`
           : `<span class="status-wont">✗ Won't do</span>`;
+        const toggleLabel = item.state === "done" ? "✗ Won't Do" : "✓ Done";
         return `
-          <div class="done-card">
+          <div class="done-card" data-plant="${item.plant}">
+            <div class="done-hint reopen-hint">↩ Reopen</div>
+            <div class="done-hint toggle-hint">${toggleLabel}</div>
             ${imgEl}
             <div class="done-card-info">
               <div class="done-card-name">${item.plant}</div>
@@ -122,6 +124,12 @@ function renderStack() {
           </div>`;
       }).join("")}
     </div>`;
+
+  // Attach swipe to each done card
+  doneSection.querySelectorAll(".done-card").forEach(el => {
+    const item = done.find(i => i.plant === el.dataset.plant);
+    if (item) attachDoneSwipe(el, item);
+  });
 }
 
 function buildCard(item, isTop) {
@@ -280,6 +288,84 @@ function attachSwipe(card, item) {
 
   card.addEventListener("touchend",    () => end());
   card.addEventListener("touchcancel", () => end());
+}
+
+// ── Done-card swipe (reopen / toggle) ────────────────────────
+function attachDoneSwipe(el, item) {
+  let startX = 0, startY = 0, deltaX = 0;
+  let active = false, direction = null;
+  const THRESHOLD = 60;
+  const LOCK_PX = 8;
+
+  const reopenHint = el.querySelector(".reopen-hint");
+  const toggleHint = el.querySelector(".toggle-hint");
+
+  function start(x, y) {
+    startX = x; startY = y; deltaX = 0;
+    active = true; direction = null;
+  }
+
+  function move(x, y) {
+    if (!active) return;
+    const dx = x - startX;
+    const dy = y - startY;
+    if (!direction && Math.hypot(dx, dy) > LOCK_PX) {
+      direction = Math.abs(dx) >= Math.abs(dy) ? "h" : "v";
+    }
+    if (direction !== "h") return;
+
+    deltaX = dx;
+    el.classList.add("is-swiping");
+    el.style.transform = `translateX(${deltaX}px)`;
+    const pct = Math.min(Math.abs(deltaX) / THRESHOLD, 1);
+    reopenHint.style.opacity = deltaX > 0 ? pct : 0;
+    toggleHint.style.opacity = deltaX < 0 ? pct : 0;
+  }
+
+  function end() {
+    if (!active) return;
+    active = false;
+    el.classList.remove("is-swiping");
+    el.style.transform = "";
+    reopenHint.style.opacity = 0;
+    toggleHint.style.opacity = 0;
+
+    if (direction === "h") {
+      if (deltaX > THRESHOLD) {
+        // Reopen: move to front of stack as pending
+        setState(CURRENT_YEAR, NOW.getMonth(), item.plant, "pending");
+        item.state = "pending";
+        const idx = stackItems.indexOf(item);
+        if (idx !== -1) stackItems.splice(idx, 1);
+        stackItems.unshift(item); // front of stack
+        renderStack();
+      } else if (deltaX < -THRESHOLD) {
+        // Toggle done ↔ wont_do
+        const next = item.state === "done" ? "wont_do" : "done";
+        setState(CURRENT_YEAR, NOW.getMonth(), item.plant, next);
+        item.state = next;
+        renderStack();
+      }
+    }
+    direction = null;
+  }
+
+  el.addEventListener("mousedown", e => { e.preventDefault(); start(e.clientX, e.clientY); });
+  const onMouseMove = e => move(e.clientX, e.clientY);
+  const onMouseUp   = () => end();
+  document.addEventListener("mousemove", onMouseMove);
+  document.addEventListener("mouseup",   onMouseUp);
+
+  el.addEventListener("touchstart", e => start(e.touches[0].clientX, e.touches[0].clientY), { passive: true });
+  el.addEventListener("touchmove", e => {
+    if (!active) return;
+    const dx = Math.abs(e.touches[0].clientX - startX);
+    const dy = Math.abs(e.touches[0].clientY - startY);
+    if (direction === "h" || (dx > dy && dx > LOCK_PX)) e.preventDefault();
+    move(e.touches[0].clientX, e.touches[0].clientY);
+  }, { passive: false });
+  el.addEventListener("touchend",    () => end());
+  el.addEventListener("touchcancel", () => end());
 }
 
 // ── Grid view ────────────────────────────────────────────────
