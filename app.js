@@ -462,6 +462,9 @@ function attachDoneSwipe(el, item) {
         item.state = next;
         renderStack();
       }
+    } else if (direction === null) {
+      // Tap — open modal so user can change state
+      openModal(item, true);
     }
     direction = null;
   }

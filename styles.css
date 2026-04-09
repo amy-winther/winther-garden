@@ -1073,27 +1073,34 @@ body {
   transform: translateY(100%);
   transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1);
   padding-bottom: env(safe-area-inset-bottom);
+  position: relative;
 }
 .modal-overlay.open .modal-sheet { transform: translateY(0); }
 
 .modal-handle {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
   width: 40px;
   height: 4px;
-  background: var(--border);
+  background: rgba(255,255,255,0.6);
   border-radius: 2px;
-  margin: 14px auto 4px;
 }
 
 .modal-photo {
   width: 100%;
-  height: 200px;
+  height: 220px;
   object-fit: cover;
   display: block;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
 }
 .modal-placeholder {
   width: 100%;
-  height: 200px;
+  height: 220px;
   display: flex;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
   align-items: center;
   justify-content: center;
   font-size: 56px;
