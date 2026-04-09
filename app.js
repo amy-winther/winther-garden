@@ -272,7 +272,7 @@ function buildCard(item, isTop, counterText) {
   card.innerHTML = `
     ${counterText ? `<div class="card-counter">${counterText}</div>` : ''}
     <div class="swipe-indicator done-label">DONE ✓</div>
-    <div class="swipe-indicator skip-label">SKIP ✗</div>
+    <div class="swipe-indicator skip-label">LATER ↩</div>
     ${photoEl}
     <div class="card-scrim"></div>
     <div class="card-wash"></div>
@@ -357,7 +357,7 @@ function attachSwipe(card, item) {
       cardWash.style.background = "rgba(45,106,79,0.32)";
       cardWash.style.opacity = pct;
     } else if (deltaX < 0) {
-      cardWash.style.background = "rgba(185,28,28,0.28)";
+      cardWash.style.background = "rgba(217,119,6,0.28)";
       cardWash.style.opacity = pct;
     } else {
       cardWash.style.opacity = 0;
@@ -379,7 +379,7 @@ function attachSwipe(card, item) {
       const commit   = velocity > 0.8 ? 40 : THRESHOLD;
 
       if (deltaX >  commit) handleAction(item, "done");
-      else if (deltaX < -commit) handleAction(item, "wont_do");
+      else if (deltaX < -commit) handleAction(item, "later");
     }
     direction = null;
   }
