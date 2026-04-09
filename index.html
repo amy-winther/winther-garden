@@ -12,17 +12,44 @@
 <body>
 
   <header class="header">
-    <span class="header-title">Winther Garden</span>
-    <span class="header-month"></span>
-    <div class="view-toggle">
-      <button class="view-btn active" data-view="stack" title="Stack view">☰</button>
-      <button class="view-btn" data-view="grid" title="Grid view">⊞</button>
+    <div class="header-top">
+      <div class="header-left">
+        <div class="header-streak" id="header-streak" style="display:none">
+          <span class="streak-fire">🔥</span><span class="streak-count" id="streak-count"></span>
+        </div>
+      </div>
+      <div class="header-right">
+        <button class="header-icon-btn" id="btn-search" title="Search plants">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="view-btn active" data-view="stack" title="Stack view">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="4" rx="1"/><rect x="2" y="10" width="20" height="4" rx="1"/><rect x="2" y="17" width="20" height="4" rx="1"/></svg>
+        </button>
+        <button class="view-btn" data-view="grid" title="Grid view">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        </button>
+      </div>
     </div>
+    <div class="header-greeting"></div>
+    <div class="header-month-name"></div>
   </header>
 
   <!-- Stack View -->
   <div id="stack-view">
+    <div class="month-timeline"></div>
+    <div class="later-shelf"></div>
     <div class="card-stage"></div>
+    <div class="stack-actions" style="display:none">
+      <button class="action-btn btn-done" data-action="done">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </button>
+      <button class="action-btn btn-later" data-action="later">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 0 0-4-4H4"/></svg>
+      </button>
+      <button class="action-btn btn-skip" data-action="wont_do">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
     <span class="remaining"></span>
     <div class="done-section"></div>
   </div>
@@ -41,6 +68,37 @@
   <!-- Modal -->
   <div class="modal-overlay" id="modal-overlay">
     <div class="modal-sheet"></div>
+  </div>
+
+  <!-- Search overlay -->
+  <div id="search-overlay" class="search-overlay" style="display:none">
+    <div class="search-bar">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="search-input" placeholder="Search plants…" autocomplete="off">
+      <button id="search-close">✕</button>
+    </div>
+    <div id="search-results" class="search-results"></div>
+  </div>
+
+  <!-- Onboarding -->
+  <div id="onboarding" class="onboarding-overlay" style="display:none">
+    <div class="onboarding-card">
+      <div class="onboarding-emoji">🌿</div>
+      <div class="onboarding-title">Welcome to your garden</div>
+      <div class="onboarding-body">Swipe cards left or right to manage your monthly tasks</div>
+      <div class="onboarding-gestures">
+        <div class="gesture-side">
+          <div class="gesture-arrow">←</div>
+          <div class="gesture-label">Skip</div>
+        </div>
+        <div class="gesture-card">🌱</div>
+        <div class="gesture-side">
+          <div class="gesture-label">Done</div>
+          <div class="gesture-arrow">→</div>
+        </div>
+      </div>
+      <button class="onboarding-btn" id="onboarding-dismiss">Let's go</button>
+    </div>
   </div>
 
   <script src="app.js"></script>
